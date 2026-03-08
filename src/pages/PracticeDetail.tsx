@@ -44,25 +44,33 @@ const PracticeDetail = () => {
         </div>
       </nav>
 
-      {/* BACK LINK */}
-      <div className="max-w-4xl mx-auto px-6 pt-28 pb-4">
-        <Link to="/" className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors">
-          <ArrowLeft className="w-4 h-4" />
-          Back to Home
-        </Link>
-      </div>
+      {/* HERO IMAGE */}
+      <section className="relative h-[60vh] min-h-[400px] flex items-end">
+        <img src={practice.image} alt={practice.title} className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/40 to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-12 w-full">
+          <Link to="/" className="inline-flex items-center gap-2 font-body text-sm text-cream/70 hover:text-cream transition-colors mb-6">
+            <ArrowLeft className="w-4 h-4" />
+            Back to Home
+          </Link>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-display text-5xl md:text-7xl font-light text-cream leading-tight"
+          >
+            {practice.title}
+          </motion.h1>
+        </div>
+      </section>
 
       {/* CONTENT */}
       <motion.div
-        className="max-w-4xl mx-auto px-6 pb-28"
+        className="max-w-4xl mx-auto px-6 py-20 pb-28"
         initial="hidden"
         animate="visible"
         variants={stagger}
       >
-        {/* Title */}
-        <motion.h1 variants={fadeUp} className="font-display text-5xl md:text-6xl font-light mb-16 leading-tight">
-          {practice.title}
-        </motion.h1>
 
         {/* What is it */}
         <motion.div variants={fadeUp} className="mb-16">
