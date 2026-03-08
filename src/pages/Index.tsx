@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-retreat.jpg";
 import aboutImg from "@/assets/about-retreat.jpg";
 import experienceImg from "@/assets/retreat-experience.jpg";
 import communityImg from "@/assets/community.jpg";
 import { Button } from "@/components/ui/button";
+import { practices } from "@/data/practices";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -14,16 +16,6 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
-const experiences = [
-  { title: "Transformational Coaching", desc: "One-on-one sessions to unlock your potential and design a life aligned with your deepest values." },
-  { title: "Hypnotherapy Sessions", desc: "Access your subconscious mind to release limiting beliefs and patterns holding you back." },
-  { title: "Reiki Energy Healing", desc: "Restore your energetic balance through gentle, hands-on healing practices." },
-  { title: "Family Constellations", desc: "Explore hidden family dynamics and heal generational patterns for lasting freedom." },
-  { title: "Addiction Recovery Guidance", desc: "Compassionate talks and tools for those on the path to recovery and conscious living." },
-  { title: "Personal Development Workshops", desc: "Interactive group sessions focused on building emotional intelligence and resilience." },
-  { title: "Art Therapy & Creative Expression", desc: "Use creativity as a gateway to self-discovery and emotional release." },
-  { title: "Meditation & Conscious Awareness", desc: "Guided practices to cultivate presence, inner peace and mindful awareness." },
-];
 
 const plans = [
   { name: "3-Day Transformation", price: "From $1,200", features: ["Accommodation included", "Daily workshops", "1 private coaching session", "Group healing circles", "All meals included"] },
@@ -115,15 +107,16 @@ const Index = () => {
             <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light">Your healing journey</motion.h2>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {experiences.map((exp) => (
-              <motion.div
-                key={exp.title}
-                variants={fadeUp}
-                className="bg-background p-8 border border-border hover:border-primary/30 transition-colors duration-300 group"
-              >
-                <h3 className="font-display text-xl font-medium mb-3 group-hover:text-primary transition-colors">{exp.title}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{exp.desc}</p>
-              </motion.div>
+            {practices.map((exp) => (
+              <Link key={exp.slug} to={`/practice/${exp.slug}`}>
+                <motion.div
+                  variants={fadeUp}
+                  className="bg-background p-8 border border-border hover:border-primary/30 transition-all duration-300 group cursor-pointer hover:-translate-y-2 hover:shadow-lg h-full"
+                >
+                  <h3 className="font-display text-xl font-medium mb-3 group-hover:text-primary transition-colors">{exp.title}</h3>
+                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{exp.desc}</p>
+                </motion.div>
+              </Link>
             ))}
           </motion.div>
         </div>
