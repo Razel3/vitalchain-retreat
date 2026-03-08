@@ -1,7 +1,19 @@
+import coachingImg from "@/assets/practices/transformational-coaching.jpg";
+import hypnotherapyImg from "@/assets/practices/hypnotherapy.jpg";
+import reikiImg from "@/assets/practices/reiki.jpg";
+import constellationsImg from "@/assets/practices/family-constellations.jpg";
+import addictionImg from "@/assets/practices/addiction-recovery.jpg";
+import developmentImg from "@/assets/practices/personal-development.jpg";
+import artImg from "@/assets/practices/art-therapy.jpg";
+import meditationImg from "@/assets/practices/meditation.jpg";
+import freeTimeImg from "@/assets/practices/free-time.jpg";
+import diningImg from "@/assets/practices/nourishment-dining.jpg";
+
 export interface Practice {
   slug: string;
   title: string;
   desc: string;
+  image: string;
   whatIs: { title: string; text: string };
   howWorks: { title: string; text: string };
   benefits: string[];
@@ -14,6 +26,7 @@ export const practices: Practice[] = [
     slug: "transformational-coaching",
     title: "Transformational Coaching",
     desc: "One-on-one sessions to unlock your potential and design a life aligned with your deepest values.",
+    image: coachingImg,
     whatIs: {
       title: "What is Transformational Coaching?",
       text: "Transformational Coaching is a deep, one-on-one process designed to help you uncover your true desires, break through limitations, and create lasting change in your life. It goes beyond surface-level goals to address the core beliefs and patterns that shape your reality.",
@@ -40,6 +53,7 @@ export const practices: Practice[] = [
     slug: "hypnotherapy",
     title: "Hypnotherapy Sessions",
     desc: "Access your subconscious mind to release limiting beliefs and patterns holding you back.",
+    image: hypnotherapyImg,
     whatIs: {
       title: "What is Hypnotherapy?",
       text: "Hypnotherapy is a therapeutic technique that uses guided relaxation and focused attention to access the subconscious mind. It helps uncover and reprogram deep-seated beliefs, habits, and emotional patterns that influence your behavior and well-being.",
@@ -66,6 +80,7 @@ export const practices: Practice[] = [
     slug: "reiki-energy-healing",
     title: "Reiki Energy Healing",
     desc: "Restore your energetic balance through gentle, hands-on healing practices.",
+    image: reikiImg,
     whatIs: {
       title: "What is Reiki?",
       text: "Reiki is a gentle energy healing practice that supports the body's natural ability to restore balance. Through light touch or hands placed near the body, energy is guided to help release tension, reduce stress, and promote emotional and spiritual well-being.",
@@ -92,6 +107,7 @@ export const practices: Practice[] = [
     slug: "family-constellations",
     title: "Family Constellations",
     desc: "Explore hidden family dynamics and heal generational patterns for lasting freedom.",
+    image: constellationsImg,
     whatIs: {
       title: "What are Family Constellations?",
       text: "Family Constellations is a therapeutic approach that reveals hidden dynamics within family systems. It helps uncover unconscious patterns, loyalties, and entanglements passed down through generations that may be affecting your present life.",
@@ -118,6 +134,7 @@ export const practices: Practice[] = [
     slug: "addiction-recovery",
     title: "Addiction Recovery Guidance",
     desc: "Compassionate talks and tools for those on the path to recovery and conscious living.",
+    image: addictionImg,
     whatIs: {
       title: "What is Addiction Recovery Guidance?",
       text: "Addiction Recovery Guidance offers compassionate support, tools, and conversations for those navigating the journey of recovery. It combines therapeutic approaches with personal development to help you build a life of conscious, healthy choices.",
@@ -144,6 +161,7 @@ export const practices: Practice[] = [
     slug: "personal-development",
     title: "Personal Development Workshops",
     desc: "Interactive group sessions focused on building emotional intelligence and resilience.",
+    image: developmentImg,
     whatIs: {
       title: "What are Personal Development Workshops?",
       text: "Personal Development Workshops are interactive group sessions designed to help you develop emotional intelligence, self-awareness, and practical life skills. They combine learning, reflection, and group dynamics to accelerate your personal growth.",
@@ -170,6 +188,7 @@ export const practices: Practice[] = [
     slug: "art-therapy",
     title: "Art Therapy & Creative Expression",
     desc: "Use creativity as a gateway to self-discovery and emotional release.",
+    image: artImg,
     whatIs: {
       title: "What is Art Therapy?",
       text: "Art Therapy is a form of expressive therapy that uses creative processes like painting, drawing, and sculpting to explore emotions, reduce stress, and foster self-discovery. No artistic skill is required — the focus is on the process, not the product.",
@@ -196,6 +215,7 @@ export const practices: Practice[] = [
     slug: "meditation",
     title: "Meditation & Conscious Awareness",
     desc: "Guided practices to cultivate presence, inner peace and mindful awareness.",
+    image: meditationImg,
     whatIs: {
       title: "What is Meditation & Conscious Awareness?",
       text: "Meditation is the practice of training your attention and awareness to achieve mental clarity, emotional calm, and a deeper connection with the present moment. Conscious awareness extends this practice into everyday life, helping you live with greater intention and presence.",
@@ -222,6 +242,7 @@ export const practices: Practice[] = [
     slug: "free-time",
     title: "Free Time",
     desc: "Unstructured moments to rest, reflect, explore nature, or simply be present with yourself.",
+    image: freeTimeImg,
     whatIs: {
       title: "What is Free Time at the Retreat?",
       text: "Free Time is an intentional part of the retreat experience. It provides unstructured space for you to rest, journal, walk in nature, read, or simply sit in stillness. These moments are essential for integrating the insights and experiences from your sessions.",
@@ -248,6 +269,7 @@ export const practices: Practice[] = [
     slug: "nourishment-dining",
     title: "Nourishment & Dining",
     desc: "Wholesome, mindfully prepared meals designed to nourish your body, mind and spirit.",
+    image: diningImg,
     whatIs: {
       title: "What is Nourishment & Dining?",
       text: "At VitalChain Retreat, meals are more than just food — they are a mindful experience. Our nourishment program features wholesome, plant-forward cuisine prepared with fresh, locally sourced ingredients designed to support your healing and energize your body.",
