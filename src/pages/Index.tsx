@@ -106,15 +106,18 @@ const Index = () => {
             <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Experiences & Practices</motion.p>
             <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light">Your healing journey</motion.h2>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {practices.map((exp) => (
               <Link key={exp.slug} to={`/practice/${exp.slug}`}>
                 <motion.div
                   variants={fadeUp}
-                  className="bg-background p-8 border border-border hover:border-primary/30 transition-all duration-300 group cursor-pointer hover:-translate-y-2 hover:shadow-lg h-full"
+                  className="relative overflow-hidden h-[280px] group cursor-pointer hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
                 >
-                  <h3 className="font-display text-xl font-medium mb-3 group-hover:text-primary transition-colors">{exp.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{exp.desc}</p>
+                  <img src={exp.image} alt={exp.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="font-display text-xl font-medium text-cream leading-tight">{exp.title}</h3>
+                  </div>
                 </motion.div>
               </Link>
             ))}
