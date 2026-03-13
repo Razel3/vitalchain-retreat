@@ -123,15 +123,24 @@ const Index = () => {
       <section className="py-28 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
-            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">About the Retreat</motion.p>
+            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">About the VitalChain Retreat</motion.p>
             <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light leading-tight mb-6">
-              A sacred space for<br />transformation
+              A Sacred Space for Deep<br />Transformation
             </motion.h2>
             <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-4">
-              VitalChain Retreat is a safe and inspiring space where people can disconnect from the noise and stress of everyday life and reconnect with their true selves.
+              VitalChain Retreat is an immersive experience designed to help you step away from the noise of modern life and reconnect with what truly matters.
             </motion.p>
-            <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed">
-              Our focus is on personal transformation, emotional healing and conscious living. Through a carefully curated blend of ancient wisdom and modern therapeutic practices, we guide you toward lasting change from the inside out.
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-4">
+              In a carefully held and inspiring environment, you will be guided through powerful processes of self-discovery, emotional release and energetic alignment.
+            </motion.p>
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-4">
+              Our approach combines ancient spiritual wisdom with modern transformational practices, creating a unique space where deep healing and personal breakthroughs can happen.
+            </motion.p>
+            <motion.p variants={fadeUp} className="font-body text-foreground leading-relaxed italic mb-2">
+              This is not just a retreat.
+            </motion.p>
+            <motion.p variants={fadeUp} className="font-body text-foreground leading-relaxed font-medium">
+              It is an opportunity to realign with your purpose, your energy and your highest potential.
             </motion.p>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
