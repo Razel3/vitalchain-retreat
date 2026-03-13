@@ -64,16 +64,17 @@ const Index = () => {
           variants={stagger}
         >
           <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-sand mb-4">
-            Reconnect with your mind, body and spirit
+            Transformational Retreats for Conscious Leaders
           </motion.p>
           <motion.h1 variants={fadeUp} className="font-display text-6xl md:text-8xl lg:text-9xl font-light text-cream leading-[0.9] mb-6">
             VitalChain<br />Retreat
           </motion.h1>
           <motion.p variants={fadeUp} className="font-body text-cream/80 max-w-xl text-lg leading-relaxed mb-10">
-            A transformational retreat designed to help you heal, grow and rediscover your inner power through guided practices and conscious experiences.
+            Reconnect with your purpose, clear energetic blockages and activate your next level of life and leadership.
           </motion.p>
-          <motion.div variants={fadeUp}>
-            <Button variant="hero">Apply for the Retreat</Button>
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+            <Button variant="hero">Apply for the Next Retreat</Button>
+            <Button variant="heroOutline" className="border-cream text-cream hover:bg-cream hover:text-foreground">Explore the Experience</Button>
           </motion.div>
         </motion.div>
       </section>
