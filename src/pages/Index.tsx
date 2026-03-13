@@ -208,6 +208,7 @@ const Index = () => {
             <motion.p variants={fadeUp} className="font-body text-foreground leading-relaxed mt-6 italic">
               If you feel that something inside you is asking for change, clarity or renewal, this experience may be exactly what you need.
             </motion.p>
+          </motion.div>
         </div>
       </section>
 
