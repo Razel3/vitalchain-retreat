@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-retreat.jpg";
 import aboutImg from "@/assets/about-retreat.jpg";
+import reflectionImg from "@/assets/self-reflection.jpg";
 import experienceImg from "@/assets/retreat-experience.jpg";
 import communityImg from "@/assets/community.jpg";
 import { Button } from "@/components/ui/button";
@@ -77,6 +78,42 @@ const Index = () => {
             <Button variant="heroOutline" className="border-cream text-cream hover:bg-cream hover:text-foreground">Explore the Experience</Button>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* IS THIS WHERE YOU ARE */}
+      <section className="py-28 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+            <img src={reflectionImg} alt="Person in deep self-reflection by a calm lake" className="w-full h-[500px] object-cover rounded-sm" />
+          </motion.div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light leading-tight mb-6">
+              Is This Where You<br />Are Right Now?
+            </motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-4">
+              Many high-performing individuals reach a point where something feels missing.
+            </motion.p>
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-6">
+              On the outside, life may look successful,<br />but inside there is a sense of disconnection.
+            </motion.p>
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-4">You may feel:</motion.p>
+            {[
+              "Disconnected from your deeper purpose",
+              "Mentally overloaded by constant pressure",
+              "Spiritually blocked or energetically drained",
+              "Successful in life, yet searching for deeper meaning",
+              "Surrounded by people, yet craving authentic connection",
+            ].map((item) => (
+              <motion.div key={item} variants={fadeUp} className="flex items-start gap-4 mb-3">
+                <span className="text-primary mt-1 text-lg">●</span>
+                <p className="font-body text-muted-foreground leading-relaxed">{item}</p>
+              </motion.div>
+            ))}
+            <motion.p variants={fadeUp} className="font-body text-foreground leading-relaxed mt-6 italic">
+              And deep down you feel that something greater is calling you.
+            </motion.p>
+          </motion.div>
+        </div>
       </section>
 
       {/* ABOUT */}
