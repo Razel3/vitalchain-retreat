@@ -187,9 +187,9 @@ const Index = () => {
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Is This Retreat For You?</motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light leading-tight mb-6">
+            <motion.p variants={fadeUp} className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
               The VitalChain Retreat is designed for individuals who feel called to experience deeper transformation in their lives.
-            </motion.h2>
+            </motion.p>
             <motion.p variants={fadeUp} className="font-body text-foreground leading-relaxed mb-6 font-medium">
               This retreat may be for you if you are:
             </motion.p>
