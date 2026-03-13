@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-retreat.jpg";
 import aboutImg from "@/assets/about-retreat.jpg";
+import reflectionImg from "@/assets/self-reflection.jpg";
 import experienceImg from "@/assets/retreat-experience.jpg";
 import communityImg from "@/assets/community.jpg";
 import { Button } from "@/components/ui/button";
