@@ -112,6 +112,9 @@ const Index = () => {
             <motion.p variants={fadeUp} className="font-body text-foreground leading-relaxed mt-6 italic">
               And deep down you feel that something greater is calling you.
             </motion.p>
+            <motion.p variants={fadeUp} className="font-body text-foreground leading-relaxed mt-4 font-medium">
+              You are not lost.<br />You are being called to evolve.
+            </motion.p>
           </motion.div>
         </div>
       </section>
