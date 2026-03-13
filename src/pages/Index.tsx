@@ -186,21 +186,28 @@ const Index = () => {
             <img src={communityImg} alt="Group healing session outdoors" className="w-full h-[500px] object-cover rounded-sm" />
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
-            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Who is this for</motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light leading-tight mb-8">
-              This retreat is for you
+            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Is This Retreat For You?</motion.p>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light leading-tight mb-6">
+              The VitalChain Retreat is designed for individuals who feel called to experience deeper transformation in their lives.
             </motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-foreground leading-relaxed mb-6 font-medium">
+              This retreat may be for you if you are:
+            </motion.p>
             {[
-              "People seeking personal growth and deeper self-awareness",
-              "People going through major life transitions",
-              "People healing from emotional challenges or past trauma",
-              "People looking to reconnect with their purpose and passion",
+              "Seeking deeper self-awareness and personal growth",
+              "Feeling disconnected from your purpose or direction",
+              "Going through a major life transition or inner awakening",
+              "Ready to release emotional blockages and limiting patterns",
+              "Looking to reconnect with your passion, clarity and inner power",
             ].map((item) => (
-              <motion.div key={item} variants={fadeUp} className="flex items-start gap-4 mb-5">
+              <motion.div key={item} variants={fadeUp} className="flex items-start gap-4 mb-4">
                 <span className="text-primary mt-1 text-lg">●</span>
                 <p className="font-body text-muted-foreground leading-relaxed">{item}</p>
               </motion.div>
             ))}
+            <motion.p variants={fadeUp} className="font-body text-foreground leading-relaxed mt-6 italic">
+              If you feel that something inside you is asking for change, clarity or renewal, this experience may be exactly what you need.
+            </motion.p>
           </motion.div>
         </div>
       </section>
