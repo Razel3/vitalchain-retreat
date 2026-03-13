@@ -153,8 +153,12 @@ const Index = () => {
       <section className="py-28 px-6 bg-card">
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-16">
-            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Experiences & Practices</motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light">Your healing journey</motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Experiences & Transformational Practices</motion.p>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-4">A journey designed to activate your mind, body and soul</motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-2">
+              During the retreat, you will experience a carefully curated combination of practices designed to support deep personal transformation.
+            </motion.p>
+            <motion.p variants={fadeUp} className="font-body text-foreground font-medium">These experiences may include:</motion.p>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {practices.map((exp) => (
