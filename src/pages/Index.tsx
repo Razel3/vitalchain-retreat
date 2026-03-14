@@ -334,6 +334,26 @@ const Index = () => {
         </div>
       </section>
 
+      {/* VISION BEHIND VITALCHAIN */}
+      <section className="py-28 px-6">
+        <div className="max-w-3xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center">
+            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Our Purpose</motion.p>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-10">The Vision Behind VitalChain</motion.h2>
+            <motion.div variants={fadeUp} className="font-body text-muted-foreground leading-relaxed space-y-6 text-left">
+              <p>VitalChain Retreat was created with a clear vision:</p>
+              <p className="text-foreground font-display text-xl md:text-2xl font-light italic text-center px-4">
+                To build a space where people can reconnect with their true essence, release emotional blockages and rediscover their life purpose.
+              </p>
+              <p>Our retreats bring together experienced practitioners from different healing and spiritual disciplines. By combining ancient wisdom with modern transformational practices, we create a unique environment where deep personal change becomes possible.</p>
+              <p>Each guide contributes their expertise to support participants through a powerful journey of self-discovery, healing and conscious growth.</p>
+              <p className="text-foreground font-medium">VitalChain is more than a retreat.</p>
+              <p>It is part of a growing ecosystem dedicated to personal transformation, spiritual development and conscious leadership.</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* PLANS */}
       <section className="py-28 px-6">
         <div className="max-w-7xl mx-auto">
