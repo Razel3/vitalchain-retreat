@@ -89,11 +89,9 @@ const GuideCarousel = () => {
           }}
         >
           <div
-            className="flex items-start justify-center h-full"
+            className="relative h-full"
             style={{
               width: "100%",
-              perspective: "1200px",
-              perspectiveOrigin: "center",
             }}
           >
             {guides.map((guide, index) => {
