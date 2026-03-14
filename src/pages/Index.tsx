@@ -387,8 +387,8 @@ const Index = () => {
       <section className="py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-16">
-            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Plans & Stay Options</motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light">Choose your journey</motion.h2>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-4">Choose Your Retreat Experience</motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground text-lg max-w-2xl mx-auto">All retreat packages include full participation in the VitalChain transformational program.</motion.p>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-3 gap-8">
             {plans.map((plan) => (
