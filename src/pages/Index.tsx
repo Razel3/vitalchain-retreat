@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-retreat.jpg";
 import aboutImg from "@/assets/about-retreat.jpg";
 import reflectionImg from "@/assets/self-reflection.jpg";
-import experienceImg from "@/assets/retreat-experience.jpg";
 import communityImg from "@/assets/community.jpg";
+import poolSunset from "@/assets/retreat/pool-sunset.jpg";
+import terraceDining from "@/assets/retreat/terrace-dining.jpg";
+import terraceSea from "@/assets/retreat/terrace-sea.jpg";
+import bedroom from "@/assets/retreat/bedroom.jpg";
+import poolDay from "@/assets/retreat/pool-day.jpg";
+import garden from "@/assets/retreat/garden.jpg";
+import PhotoStack from "@/components/PhotoStack";
 import { Button } from "@/components/ui/button";
 import { practices } from "@/data/practices";
 
@@ -214,27 +220,56 @@ const Index = () => {
 
       {/* RETREAT EXPERIENCE */}
       <section className="py-28 px-6 bg-card">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+        <div className="max-w-7xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-16">
             <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">The Retreat Experience</motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light leading-tight mb-6">
-              Immerse yourself in healing
-            </motion.h2>
-            <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-8">
-              Participants stay together in a peaceful environment designed for reflection, healing and deep connection. Every detail is crafted to support your transformation.
-            </motion.p>
-            <motion.div variants={stagger} className="grid grid-cols-2 gap-4">
-              {["Accommodation", "Daily Workshops", "Group Sessions", "Guided Healing", "Community Experience"].map((item) => (
-                <motion.div key={item} variants={fadeUp} className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="font-body text-sm">{item}</span>
-                </motion.div>
-              ))}
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-4">A carefully designed journey of transformation, connection and renewal</motion.h2>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+              <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-4">
+                During the VitalChain Retreat, every element of the experience is intentionally designed to support deep personal transformation.
+              </motion.p>
+              <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-4">
+                Participants share several days together in a peaceful and inspiring environment where they can disconnect from the demands of everyday life and fully focus on their inner journey.
+              </motion.p>
+              <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-10">
+                Through guided practices, meaningful conversations and shared moments of reflection, a powerful space for healing and growth naturally emerges.
+              </motion.p>
+              <motion.div variants={fadeUp}>
+                <h3 className="font-display text-xl font-medium mb-6">What a typical day may feel like</h3>
+                <div className="space-y-6">
+                  {[
+                    { time: "Morning", desc: "Meditation and grounding practices" },
+                    { time: "Midday", desc: "Workshops and personal growth sessions" },
+                    { time: "Afternoon", desc: "Nature immersion and reflection" },
+                    { time: "Evening", desc: "Integration circles and meaningful conversations" },
+                  ].map((slot) => (
+                    <div key={slot.time} className="flex items-start gap-4">
+                      <div className="w-20 shrink-0">
+                        <span className="font-display text-sm font-semibold text-primary">{slot.time}</span>
+                      </div>
+                      <div className="border-l border-border pl-4">
+                        <p className="font-body text-muted-foreground text-sm leading-relaxed">{slot.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <img src={experienceImg} alt="Retreat accommodation" className="w-full h-[500px] object-cover rounded-sm" />
-          </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <PhotoStack
+                images={[
+                  { src: poolSunset, alt: "Pool at sunset with Adriatic sea view" },
+                  { src: terraceDining, alt: "Outdoor dining terrace with sea view" },
+                  { src: terraceSea, alt: "Terrace overlooking the Adriatic coast" },
+                  { src: bedroom, alt: "Comfortable retreat bedroom" },
+                  { src: poolDay, alt: "Pool area during the day" },
+                  { src: garden, alt: "Lush Mediterranean garden" },
+                ]}
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
