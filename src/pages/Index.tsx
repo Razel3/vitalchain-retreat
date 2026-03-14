@@ -12,6 +12,7 @@ import poolDay from "@/assets/retreat/pool-day.jpg";
 import garden from "@/assets/retreat/garden.jpg";
 import locationImg from "@/assets/retreat-location.jpg";
 import PhotoStack from "@/components/PhotoStack";
+import GuideCarousel from "@/components/GuideCarousel";
 import { Button } from "@/components/ui/button";
 import { practices } from "@/data/practices";
 
@@ -313,6 +314,22 @@ const Index = () => {
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
               <img src={locationImg} alt="Peaceful Croatian coastline with stone terrace overlooking the Adriatic sea" className="w-full h-[550px] object-cover rounded-sm" />
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* MEET YOUR GUIDES */}
+      <section className="py-28 px-6 bg-card">
+        <div className="max-w-7xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-12">
+            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Your Retreat Team</motion.p>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-4">Meet Your Guides</motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              A carefully selected team of experienced practitioners, healers and coaches dedicated to supporting your transformation.
+            </motion.p>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+            <GuideCarousel />
           </motion.div>
         </div>
       </section>
