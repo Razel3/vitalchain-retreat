@@ -229,9 +229,22 @@ const Index = () => {
             <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light">The Transformation You Will Experience</motion.h2>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
-            {benefits.map((b) => (
-              <motion.div key={b.title} variants={fadeUp} className="text-center">
-                <span className="text-3xl text-primary block mb-4">{b.icon}</span>
+            {benefits.map((b, i) => (
+              <motion.div
+                key={b.title}
+                variants={fadeUp}
+                className="text-center group"
+              >
+                <motion.span
+                  className="text-3xl text-primary block mb-4"
+                  initial={{ scale: 0, rotate: -30, opacity: 0 }}
+                  whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12, duration: 0.5, type: "spring", stiffness: 200, damping: 15 }}
+                  whileHover={{ scale: 1.25, rotate: 8, transition: { duration: 0.3 } }}
+                >
+                  {b.icon}
+                </motion.span>
                 <h3 className="font-display text-lg font-medium mb-2">{b.title}</h3>
                 <p className="font-body text-sm text-muted-foreground">{b.desc}</p>
               </motion.div>
