@@ -114,6 +114,9 @@ const GuideCarousel = () => {
                   style={{
                     width: CARD_WIDTH,
                     height: CARD_HEIGHT,
+                    left: "50%",
+                    top: 20,
+                    marginLeft: -(CARD_WIDTH / 2),
                     zIndex,
                     transformStyle: "preserve-3d",
                   }}
