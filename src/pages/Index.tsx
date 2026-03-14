@@ -41,11 +41,11 @@ const testimonials = [
 ];
 
 const benefits = [
-  { icon: "✦", title: "Mental Clarity", desc: "Clear the fog and gain a fresh perspective on your life path." },
-  { icon: "❋", title: "Emotional Healing", desc: "Release stored emotions and find lasting inner peace." },
+  { icon: "✦", title: "Mental Clarity", desc: "Gain a renewed perspective and deeper understanding of your life direction." },
+  { icon: "❋", title: "Emotional Healing", desc: "Release stored emotions and reconnect with inner peace." },
   { icon: "◎", title: "Energy Balance", desc: "Restore harmony between body, mind and spirit." },
-  { icon: "⬡", title: "Sense of Purpose", desc: "Reconnect with your deeper calling and direction." },
-  { icon: "∞", title: "Meaningful Connections", desc: "Bond with like-minded souls on a shared journey." },
+  { icon: "⬡", title: "Sense of Purpose", desc: "Reconnect with your deeper calling and authentic path." },
+  { icon: "∞", title: "Meaningful Connections", desc: "Build powerful relationships with like-minded individuals." },
 ];
 
 const Index = () => {
