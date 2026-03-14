@@ -28,9 +28,9 @@ const stagger = {
 
 
 const plans = [
-  { name: "3-Day Transformation", price: "From $1,200", features: ["Accommodation included", "Daily workshops", "1 private coaching session", "Group healing circles", "All meals included"] },
-  { name: "5-Day Deep Healing", price: "From $1,950", features: ["Accommodation included", "Daily workshops & practices", "2 private coaching sessions", "Hypnotherapy session", "Reiki healing session", "All meals included"], popular: true },
-  { name: "7-Day Full Immersion", price: "From $2,800", features: ["Premium accommodation", "All workshops & practices", "3 private coaching sessions", "Full healing package", "Art therapy session", "Integration support", "All meals included"] },
+  { name: "Awakening", duration: "7 Days", price: "€2,500", features: ["Shared accommodation", "Chef-prepared meals", "Daily yoga & meditation", "Group healing & integration circles", "1 Reiki energy session", "VitalChain Academy access", "1 VitalChain NFT experience pass"] },
+  { name: "Signature", duration: "7 Days", price: "€3,000", features: ["Private accommodation", "All meals + detox juices", "Daily yoga, meditation & breathwork", "3 group sessions + 2 private sessions", "Reiki & sound healing", "Craniosacral therapy", "Family constellation workshop", "1 VitalChain NFT + academy digital course"], popular: true },
+  { name: "Premium Experience", duration: "7 Days", price: "€4,200", features: ["Luxury private room", "All meals + detox program", "Full retreat modalities included", "5 private 1:1 healing sessions", "Hypnotherapy session", "Personal spiritual coaching session", "3 VitalChain NFTs", "Lifetime VitalChain Academy access", "Private airport transfer", "VIP integration session after retreat"] },
 ];
 
 const testimonials = [
@@ -387,8 +387,8 @@ const Index = () => {
       <section className="py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-16">
-            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Plans & Stay Options</motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light">Choose your journey</motion.h2>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-4">Choose Your Retreat Experience</motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground text-lg max-w-2xl mx-auto">All retreat packages include full participation in the VitalChain transformational program.</motion.p>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-3 gap-8">
             {plans.map((plan) => (
@@ -398,7 +398,8 @@ const Index = () => {
                 className={`p-10 border transition-all duration-300 ${plan.popular ? "border-primary bg-primary/5 scale-[1.02]" : "border-border bg-background"}`}
               >
                 {plan.popular && <span className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-4 block">Most Popular</span>}
-                <h3 className="font-display text-2xl font-medium mb-2">{plan.name}</h3>
+                <h3 className="font-display text-2xl font-medium mb-1">{plan.name}</h3>
+                <p className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground mb-3">{plan.duration}</p>
                 <p className="font-display text-3xl font-light text-primary mb-6">{plan.price}</p>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((f) => (
