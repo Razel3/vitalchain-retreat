@@ -355,6 +355,34 @@ const Index = () => {
         </div>
       </section>
 
+      {/* VITALCHAIN ACADEMY */}
+      <section className="py-28 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Beyond the Retreat</motion.p>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-8">Continue Your Journey with VitalChain Academy</motion.h2>
+            <motion.div variants={fadeUp} className="font-body text-muted-foreground leading-relaxed space-y-5">
+              <p>The VitalChain Retreat is only the beginning of your transformation journey.</p>
+              <p>Participants also gain access to the VitalChain ecosystem, where they can continue their personal and spiritual development through the <span className="text-foreground font-medium">VitalChain Academy</span>.</p>
+              <p>The academy provides ongoing learning, community support and advanced teachings designed to deepen the transformation initiated during the retreat.</p>
+            </motion.div>
+            <motion.div variants={fadeUp} className="mt-8 p-6 border border-border bg-card/50">
+              <p className="font-body text-sm text-foreground font-medium mb-3">Participants of the retreat receive exclusive access benefits within the VitalChain ecosystem, including:</p>
+              <ul className="space-y-2">
+                {["Learning resources & advanced courses", "Community events & gatherings", "Future programs & retreats"].map((item) => (
+                  <li key={item} className="font-body text-sm text-muted-foreground flex items-start gap-2">
+                    <span className="text-primary mt-0.5">✦</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <img src={academyImg} alt="VitalChain community gathering on a Mediterranean terrace at sunset" className="w-full h-[550px] object-cover rounded-sm shadow-lg" />
+          </motion.div>
+        </div>
+      </section>
+
       {/* PLANS */}
       <section className="py-28 px-6">
         <div className="max-w-7xl mx-auto">
