@@ -82,17 +82,14 @@ const GuideCarousel = () => {
 
         {/* Cards area */}
         <div
-          className="relative overflow-hidden mx-16 md:mx-28 lg:mx-36"
+          className="relative mx-16 md:mx-28 lg:mx-36"
           style={{
             height: CARD_HEIGHT + 40,
-            perspective: "1200px",
           }}
         >
           <div
-            className="relative h-full"
-            style={{
-              width: "100%",
-            }}
+            className="relative h-full w-full"
+            style={{ perspective: "1200px" }}
           >
             {guides.map((guide, index) => {
               const diff = index - currentIndex;
