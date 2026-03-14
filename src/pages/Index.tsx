@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-retreat.jpg";
 import aboutImg from "@/assets/about-retreat.jpg";
 import reflectionImg from "@/assets/self-reflection.jpg";
-import experienceImg from "@/assets/retreat-experience.jpg";
 import communityImg from "@/assets/community.jpg";
+import poolSunset from "@/assets/retreat/pool-sunset.jpg";
+import terraceDining from "@/assets/retreat/terrace-dining.jpg";
+import terraceSea from "@/assets/retreat/terrace-sea.jpg";
+import bedroom from "@/assets/retreat/bedroom.jpg";
+import poolDay from "@/assets/retreat/pool-day.jpg";
+import garden from "@/assets/retreat/garden.jpg";
+import PhotoStack from "@/components/PhotoStack";
 import { Button } from "@/components/ui/button";
 import { practices } from "@/data/practices";
 
