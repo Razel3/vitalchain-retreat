@@ -56,7 +56,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <span className="font-display text-xl font-semibold tracking-wide">VitalChain</span>
           <Button variant="hero" size="sm" className="text-xs px-6 py-2 h-auto">
-            Apply Now
+            Start Your Transformation
           </Button>
         </div>
       </nav>
