@@ -398,7 +398,8 @@ const Index = () => {
                 className={`p-10 border transition-all duration-300 ${plan.popular ? "border-primary bg-primary/5 scale-[1.02]" : "border-border bg-background"}`}
               >
                 {plan.popular && <span className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-4 block">Most Popular</span>}
-                <h3 className="font-display text-2xl font-medium mb-2">{plan.name}</h3>
+                <h3 className="font-display text-2xl font-medium mb-1">{plan.name}</h3>
+                <p className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground mb-3">{plan.duration}</p>
                 <p className="font-display text-3xl font-light text-primary mb-6">{plan.price}</p>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((f) => (
