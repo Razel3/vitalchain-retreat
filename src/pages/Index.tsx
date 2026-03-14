@@ -489,10 +489,17 @@ const Index = () => {
             Begin Your<br />Transformation
           </motion.h2>
           <motion.p variants={fadeUp} className="font-body text-cream/80 text-lg mb-10 max-w-lg mx-auto">
-            Your journey toward healing, clarity and purpose starts with a single step. We're ready when you are.
+            Your journey toward deeper clarity, healing and purpose begins with a single step.
           </motion.p>
-          <motion.div variants={fadeUp}>
-            <Button variant="hero">Reserve Your Spot</Button>
+          <motion.p variants={fadeUp} className="font-body text-cream/70 text-base mb-4 max-w-lg mx-auto">
+            The VitalChain Retreat is a carefully curated experience designed for individuals ready to reconnect with their authentic path and unlock their inner potential.
+          </motion.p>
+          <motion.p variants={fadeUp} className="font-body text-cream/70 text-base mb-10 max-w-lg mx-auto">
+            If you feel called to this experience, we invite you to take the next step.
+          </motion.p>
+          <motion.div variants={fadeUp} className="flex flex-col items-center gap-3">
+            <Button variant="hero">Apply for the VitalChain Retreat</Button>
+            <span className="font-body text-cream/50 text-sm">Small group experience • Limited spots available</span>
           </motion.div>
         </motion.div>
       </section>
