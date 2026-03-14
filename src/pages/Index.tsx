@@ -28,9 +28,9 @@ const stagger = {
 
 
 const plans = [
-  { name: "3-Day Transformation", price: "From $1,200", features: ["Accommodation included", "Daily workshops", "1 private coaching session", "Group healing circles", "All meals included"] },
-  { name: "5-Day Deep Healing", price: "From $1,950", features: ["Accommodation included", "Daily workshops & practices", "2 private coaching sessions", "Hypnotherapy session", "Reiki healing session", "All meals included"], popular: true },
-  { name: "7-Day Full Immersion", price: "From $2,800", features: ["Premium accommodation", "All workshops & practices", "3 private coaching sessions", "Full healing package", "Art therapy session", "Integration support", "All meals included"] },
+  { name: "Awakening", duration: "7 Days", price: "€2,500", features: ["Shared accommodation", "Chef-prepared meals", "Daily yoga & meditation", "Group healing & integration circles", "1 Reiki energy session", "VitalChain Academy access", "1 VitalChain NFT experience pass"] },
+  { name: "Signature", duration: "7 Days", price: "€3,000", features: ["Private accommodation", "All meals + detox juices", "Daily yoga, meditation & breathwork", "3 group sessions + 2 private sessions", "Reiki & sound healing", "Craniosacral therapy", "Family constellation workshop", "1 VitalChain NFT + academy digital course"], popular: true },
+  { name: "Premium Experience", duration: "7 Days", price: "€4,200", features: ["Luxury private room", "All meals + detox program", "Full retreat modalities included", "5 private 1:1 healing sessions", "Hypnotherapy session", "Personal spiritual coaching session", "3 VitalChain NFTs", "Lifetime VitalChain Academy access", "Private airport transfer", "VIP integration session after retreat"] },
 ];
 
 const testimonials = [
