@@ -221,6 +221,25 @@ const Index = () => {
         </div>
       </section>
 
+      {/* TRANSFORMATION BENEFITS */}
+      <section className="py-28 px-6 bg-card">
+        <div className="max-w-7xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-16">
+            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">What Awaits You</motion.p>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light">The Transformation You Will Experience</motion.h2>
+          </motion.div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
+            {benefits.map((b) => (
+              <motion.div key={b.title} variants={fadeUp} className="text-center">
+                <span className="text-3xl text-primary block mb-4">{b.icon}</span>
+                <h3 className="font-display text-lg font-medium mb-2">{b.title}</h3>
+                <p className="font-body text-sm text-muted-foreground">{b.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* RETREAT EXPERIENCE */}
       <section className="py-28 px-6 bg-card">
         <div className="max-w-7xl mx-auto">
