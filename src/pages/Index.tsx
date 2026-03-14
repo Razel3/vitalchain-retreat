@@ -273,6 +273,49 @@ const Index = () => {
         </div>
       </section>
 
+      {/* LOCATION */}
+      <section className="py-28 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">The Location</motion.p>
+              <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light leading-tight mb-4">
+                A Transformational<br />Setting
+              </motion.h2>
+              <motion.p variants={fadeUp} className="font-body text-lg text-muted-foreground leading-relaxed mb-6 italic">
+                Hosted in the breathtaking nature of Croatia
+              </motion.p>
+              <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-4">
+                The VitalChain Retreat takes place in a carefully selected location designed to support deep reflection, relaxation and transformation.
+              </motion.p>
+              <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-4">
+                Surrounded by the natural beauty of Croatia's coastline, participants experience a peaceful environment that invites stillness, clarity and renewal.
+              </motion.p>
+              <motion.p variants={fadeUp} className="font-body text-muted-foreground leading-relaxed mb-8">
+                Far from the noise of everyday life, this setting allows you to fully immerse yourself in your inner journey while enjoying the beauty of nature.
+              </motion.p>
+              <motion.div variants={fadeUp}>
+                <p className="font-body text-foreground font-medium mb-4">Participants will enjoy:</p>
+                {[
+                  "Peaceful natural surroundings",
+                  "Beautiful Mediterranean landscapes",
+                  "Comfortable retreat accommodations",
+                  "Spaces designed for meditation, reflection and connection",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3 mb-3">
+                    <span className="text-primary mt-1 text-sm">●</span>
+                    <p className="font-body text-muted-foreground text-sm leading-relaxed">{item}</p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <img src={locationImg} alt="Peaceful Croatian coastline with stone terrace overlooking the Adriatic sea" className="w-full h-[550px] object-cover rounded-sm" />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* PLANS */}
       <section className="py-28 px-6">
         <div className="max-w-7xl mx-auto">
