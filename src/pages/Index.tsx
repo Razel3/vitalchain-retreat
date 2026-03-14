@@ -25,22 +25,6 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
-      {/* MEET YOUR GUIDES */}
-      <section className="py-28 px-6 bg-card">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-12">
-            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Your Retreat Team</motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-4">Meet Your Guides</motion.h2>
-            <motion.p variants={fadeUp} className="font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              A carefully selected team of experienced practitioners, healers and coaches dedicated to supporting your transformation.
-            </motion.p>
-          </motion.div>
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <GuideCarousel />
-          </motion.div>
-        </div>
-      </section>
-
 
 const plans = [
   { name: "3-Day Transformation", price: "From $1,200", features: ["Accommodation included", "Daily workshops", "1 private coaching session", "Group healing circles", "All meals included"] },
