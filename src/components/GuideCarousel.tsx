@@ -89,11 +89,9 @@ const GuideCarousel = () => {
           }}
         >
           <div
-            className="flex items-start justify-center h-full"
+            className="relative h-full"
             style={{
               width: "100%",
-              perspective: "1200px",
-              perspectiveOrigin: "center",
             }}
           >
             {guides.map((guide, index) => {
@@ -116,6 +114,9 @@ const GuideCarousel = () => {
                   style={{
                     width: CARD_WIDTH,
                     height: CARD_HEIGHT,
+                    left: "50%",
+                    top: 20,
+                    marginLeft: -(CARD_WIDTH / 2),
                     zIndex,
                     transformStyle: "preserve-3d",
                   }}
