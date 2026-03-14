@@ -1,5 +1,6 @@
-import { useState, useRef, useCallback, useEffect } from "react";
-import { motion, useMotionValue, useSpring, animate } from "framer-motion";
+import { useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import guide1 from "@/assets/guides/guide-1.jpg";
 import guide2 from "@/assets/guides/guide-2.jpg";
@@ -31,191 +32,172 @@ const guides: Guide[] = [
 const CARD_WIDTH = 280;
 const CARD_HEIGHT = 400;
 const GAP = 24;
-const VISIBLE_CARDS = 5;
 
 const GuideCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
-  const dragStartX = useRef(0);
 
-  const rawX = useMotionValue(0);
-  const x = useSpring(rawX, { stiffness: 200, damping: 30, mass: 0.8 });
+  const canGoPrev = currentIndex > 0;
+  const canGoNext = currentIndex < guides.length - 1;
 
-  const totalWidth = guides.length * (CARD_WIDTH + GAP);
+  const goNext = useCallback(() => {
+    if (canGoNext) {
+      setFlippedIndex(null);
+      setCurrentIndex((i) => i + 1);
+    }
+  }, [canGoNext]);
 
-  // Normalize position to keep it within bounds for infinite feel
-  const getNormalizedOffset = useCallback(() => {
-    let val = rawX.get();
-    // Wrap around
-    while (val > totalWidth / 2) val -= totalWidth;
-    while (val < -totalWidth / 2) val += totalWidth;
-    return val;
-  }, [totalWidth]);
-
-  const getCardTransform = useCallback(
-    (index: number, offset: number) => {
-      const centerX = 0;
-      const cardPos = index * (CARD_WIDTH + GAP) + offset;
-      // Wrap for infinite loop
-      let wrappedPos = cardPos;
-      while (wrappedPos > totalWidth / 2) wrappedPos -= totalWidth;
-      while (wrappedPos < -totalWidth / 2) wrappedPos += totalWidth;
-
-      const distance = wrappedPos - centerX;
-      const normalizedDist = distance / (CARD_WIDTH + GAP);
-
-      const rotateY = Math.max(-45, Math.min(45, normalizedDist * 15));
-      const scale = Math.max(0.7, 1 - Math.abs(normalizedDist) * 0.1);
-      const zIndex = Math.round((1 - Math.abs(normalizedDist)) * 10);
-      const opacity = Math.max(0, 1 - Math.abs(normalizedDist) * 0.25);
-      const translateZ = -Math.abs(normalizedDist) * 80;
-
-      return { translateX: wrappedPos, rotateY, scale, zIndex, opacity, translateZ };
-    },
-    [totalWidth]
-  );
-
-  const [offset, setOffset] = useState(0);
-
-  useEffect(() => {
-    const unsubscribe = x.on("change", (latest) => {
-      setOffset(latest);
-    });
-    return unsubscribe;
-  }, [x]);
-
-  const handlePointerDown = (e: React.PointerEvent) => {
-    isDragging.current = false;
-    dragStartX.current = e.clientX;
-  };
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (e.buttons === 0) return;
-    const delta = e.clientX - dragStartX.current;
-    if (Math.abs(delta) > 5) isDragging.current = true;
-    rawX.set(rawX.get() + (e.clientX - dragStartX.current));
-    dragStartX.current = e.clientX;
-  };
-
-  const handlePointerUp = () => {
-    // Snap to nearest card
-    const currentX = rawX.get();
-    const nearest = Math.round(currentX / (CARD_WIDTH + GAP)) * (CARD_WIDTH + GAP);
-    animate(rawX, nearest, { type: "spring", stiffness: 300, damping: 30 });
-  };
+  const goPrev = useCallback(() => {
+    if (canGoPrev) {
+      setFlippedIndex(null);
+      setCurrentIndex((i) => i - 1);
+    }
+  }, [canGoPrev]);
 
   const handleCardClick = (index: number) => {
-    if (isDragging.current) return;
     setFlippedIndex(flippedIndex === index ? null : index);
   };
 
-  // Touch support
-  const touchStartX = useRef(0);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    isDragging.current = false;
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    const delta = e.touches[0].clientX - touchStartX.current;
-    if (Math.abs(delta) > 5) isDragging.current = true;
-    rawX.set(rawX.get() + delta);
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    handlePointerUp();
-  };
-
   return (
-    <div className="w-full overflow-hidden py-8">
-      <div
-        ref={containerRef}
-        className="relative mx-auto cursor-grab active:cursor-grabbing"
-        style={{
-          height: CARD_HEIGHT + 60,
-          perspective: "1200px",
-          perspectiveOrigin: "center",
-        }}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerLeave={handlePointerUp}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <div
-          className="absolute left-1/2 top-0"
-          style={{ width: 0, height: CARD_HEIGHT, transformStyle: "preserve-3d" }}
+    <div className="w-full py-8">
+      <div className="relative flex items-center justify-center">
+        {/* Left Arrow */}
+        <button
+          onClick={goPrev}
+          disabled={!canGoPrev}
+          className="absolute left-0 md:left-4 lg:left-8 z-30 w-12 h-12 rounded-full border border-border bg-background/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 disabled:opacity-20 disabled:cursor-not-allowed hover:bg-accent"
+          aria-label="Previous guide"
         >
-          {guides.map((guide, index) => {
-            const t = getCardTransform(index, offset);
-            const isFlipped = flippedIndex === index;
+          <ChevronLeft className="w-5 h-5 text-foreground" />
+        </button>
 
-            return (
-              <div
-                key={index}
-                className="absolute top-0 select-none"
-                style={{
-                  width: CARD_WIDTH,
-                  height: CARD_HEIGHT,
-                  left: -CARD_WIDTH / 2,
-                  transform: `translateX(${t.translateX}px) translateZ(${t.translateZ}px) rotateY(${t.rotateY}deg) scale(${t.scale})`,
-                  zIndex: t.zIndex,
-                  opacity: t.opacity,
-                  transition: "opacity 0.3s ease",
-                  transformStyle: "preserve-3d",
-                }}
-                onClick={() => handleCardClick(index)}
-              >
-                {/* Card flip container */}
+        {/* Arrow line left */}
+        {canGoPrev && (
+          <div className="hidden md:block absolute left-16 lg:left-24 z-20">
+            <svg width="80" height="2" viewBox="0 0 80 2">
+              <line x1="0" y1="1" x2="80" y2="1" stroke="currentColor" strokeWidth="1.5" className="text-foreground/40" />
+            </svg>
+          </div>
+        )}
+
+        {/* Cards area */}
+        <div
+          className="relative overflow-hidden mx-16 md:mx-28 lg:mx-36"
+          style={{
+            height: CARD_HEIGHT + 40,
+            perspective: "1200px",
+          }}
+        >
+          <div
+            className="flex items-start justify-center h-full"
+            style={{
+              width: "100%",
+              perspective: "1200px",
+              perspectiveOrigin: "center",
+            }}
+          >
+            {guides.map((guide, index) => {
+              const diff = index - currentIndex;
+              const isVisible = Math.abs(diff) <= 2;
+              if (!isVisible) return null;
+
+              const isFlipped = flippedIndex === index;
+              const translateX = diff * (CARD_WIDTH * 0.35 + GAP * 0.5);
+              const rotateY = diff * -12;
+              const scale = diff === 0 ? 1 : Math.max(0.75, 1 - Math.abs(diff) * 0.12);
+              const zIndex = 10 - Math.abs(diff);
+              const opacity = diff === 0 ? 1 : Math.max(0.4, 1 - Math.abs(diff) * 0.3);
+              const translateZ = -Math.abs(diff) * 60;
+
+              return (
                 <motion.div
-                  className="w-full h-full relative"
-                  style={{ transformStyle: "preserve-3d" }}
-                  animate={{ rotateY: isFlipped ? 180 : 0 }}
-                  transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                  key={index}
+                  className="absolute cursor-pointer select-none"
+                  style={{
+                    width: CARD_WIDTH,
+                    height: CARD_HEIGHT,
+                    zIndex,
+                    transformStyle: "preserve-3d",
+                  }}
+                  animate={{
+                    x: translateX,
+                    rotateY,
+                    scale,
+                    opacity,
+                    z: translateZ,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.25, 0.1, 0.25, 1],
+                  }}
+                  onClick={() => handleCardClick(index)}
                 >
-                  {/* Front */}
-                  <div
-                    className="absolute inset-0 rounded-sm overflow-hidden shadow-lg"
-                    style={{ backfaceVisibility: "hidden" }}
+                  {/* Card flip container */}
+                  <motion.div
+                    className="w-full h-full relative"
+                    style={{ transformStyle: "preserve-3d" }}
+                    animate={{ rotateY: isFlipped ? 180 : 0 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
                   >
-                    <img
-                      src={guide.image}
-                      alt={guide.name}
-                      className="w-full h-full object-cover"
-                      draggable={false}
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/70 to-transparent p-5">
-                      <p className="font-display text-lg text-cream font-medium">{guide.name}</p>
-                      <p className="font-body text-xs text-cream/70 tracking-wide uppercase">{guide.role}</p>
+                    {/* Front */}
+                    <div
+                      className="absolute inset-0 rounded-lg overflow-hidden shadow-lg"
+                      style={{ backfaceVisibility: "hidden" }}
+                    >
+                      <img
+                        src={guide.image}
+                        alt={guide.name}
+                        className="w-full h-full object-cover"
+                        draggable={false}
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/70 to-transparent p-5">
+                        <p className="font-display text-lg text-cream font-medium">{guide.name}</p>
+                        <p className="font-body text-xs text-cream/70 tracking-wide uppercase">{guide.role}</p>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Back */}
-                  <div
-                    className="absolute inset-0 rounded-sm overflow-hidden bg-card border border-border shadow-lg flex flex-col items-center justify-center p-8 text-center"
-                    style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-                  >
-                    <div className="w-20 h-20 rounded-full overflow-hidden mb-5 border-2 border-primary/30">
-                      <img src={guide.image} alt={guide.name} className="w-full h-full object-cover" draggable={false} />
+                    {/* Back */}
+                    <div
+                      className="absolute inset-0 rounded-lg overflow-hidden bg-card border border-border shadow-lg flex flex-col items-center justify-center p-8 text-center"
+                      style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                    >
+                      <div className="w-20 h-20 rounded-full overflow-hidden mb-5 border-2 border-primary/30">
+                        <img src={guide.image} alt={guide.name} className="w-full h-full object-cover" draggable={false} />
+                      </div>
+                      <h4 className="font-display text-2xl font-medium mb-1">{guide.name}</h4>
+                      <p className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-4">{guide.role}</p>
+                      <p className="font-body text-sm text-muted-foreground leading-relaxed">{guide.description}</p>
+                      <p className="font-body text-xs text-muted-foreground/60 mt-6">Click to flip back</p>
                     </div>
-                    <h4 className="font-display text-2xl font-medium mb-1">{guide.name}</h4>
-                    <p className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-4">{guide.role}</p>
-                    <p className="font-body text-sm text-muted-foreground leading-relaxed">{guide.description}</p>
-                    <p className="font-body text-xs text-muted-foreground/60 mt-6">Click to flip back</p>
-                  </div>
+                  </motion.div>
                 </motion.div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
+
+        {/* Arrow line right */}
+        {canGoNext && (
+          <div className="hidden md:block absolute right-16 lg:right-24 z-20">
+            <svg width="80" height="2" viewBox="0 0 80 2">
+              <line x1="0" y1="1" x2="80" y2="1" stroke="currentColor" strokeWidth="1.5" className="text-foreground/40" />
+            </svg>
+          </div>
+        )}
+
+        {/* Right Arrow */}
+        <button
+          onClick={goNext}
+          disabled={!canGoNext}
+          className="absolute right-0 md:right-4 lg:right-8 z-30 w-12 h-12 rounded-full border border-border bg-background/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 disabled:opacity-20 disabled:cursor-not-allowed hover:bg-accent"
+          aria-label="Next guide"
+        >
+          <ChevronRight className="w-5 h-5 text-foreground" />
+        </button>
       </div>
-      <p className="text-center font-body text-xs text-muted-foreground mt-4">
-        Drag to explore · Click a card to learn more
+
+      <p className="text-center font-body text-xs text-muted-foreground mt-6">
+        Click a card to learn more · {currentIndex + 1} / {guides.length}
       </p>
     </div>
   );
