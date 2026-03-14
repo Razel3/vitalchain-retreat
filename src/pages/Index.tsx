@@ -11,6 +11,7 @@ import bedroom from "@/assets/retreat/bedroom.jpg";
 import poolDay from "@/assets/retreat/pool-day.jpg";
 import garden from "@/assets/retreat/garden.jpg";
 import locationImg from "@/assets/retreat-location.jpg";
+import academyImg from "@/assets/academy-community.jpg";
 import PhotoStack from "@/components/PhotoStack";
 import GuideCarousel from "@/components/GuideCarousel";
 import { Button } from "@/components/ui/button";
