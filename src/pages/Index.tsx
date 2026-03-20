@@ -88,7 +88,7 @@ const Index = () => {
             Reconnect with your purpose, clear energetic blockages and activate your next level of life and leadership.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-            <Button variant="hero">Apply for the Next Retreat</Button>
+            <Button variant="hero" onClick={() => setReservationOpen(true)}>Apply for the Next Retreat</Button>
             <Button variant="heroOutline" className="border-cream text-cream hover:bg-cream hover:text-foreground">Explore the Experience</Button>
           </motion.div>
         </motion.div>
