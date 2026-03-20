@@ -445,7 +445,7 @@ const Index = () => {
                     </li>
                   ))}
                 </ul>
-                <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full">
+                <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => setReservationOpen(true)}>
                   Reserve Your Spot
                 </Button>
               </motion.div>
