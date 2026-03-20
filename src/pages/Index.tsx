@@ -17,6 +17,7 @@ import PhotoStack from "@/components/PhotoStack";
 import GuideCarousel from "@/components/GuideCarousel";
 import { Button } from "@/components/ui/button";
 import { practices } from "@/data/practices";
+import ReservationModal from "@/components/ReservationModal";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
