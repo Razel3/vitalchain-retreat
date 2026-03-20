@@ -91,6 +91,43 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
   const formatCurrency = (amount: number) =>
     `€${amount.toLocaleString("en-US")}`;
 
+  const handlePayDeposit = async () => {
+    if (!form.program) return;
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(
+        "https://vitalchain-backend-production.up.railway.app/api/retreats/create-reservation",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            tier: form.program,
+            participants: form.participants,
+            clientName: form.fullName,
+            clientEmail: form.email,
+            clientPhone: form.phone,
+            clientCountry: form.country,
+          }),
+        }
+      );
+      if (!res.ok) throw new Error("Request failed");
+      const data = await res.json();
+      if (data.approvalUrl) {
+        window.location.href = data.approvalUrl;
+      } else {
+        throw new Error("No approval URL");
+      }
+    } catch {
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "Please contact support@vitalchainacademy.com",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[520px] bg-[#F5F2EE] border-none p-0 gap-0 overflow-hidden max-h-[90vh] overflow-y-auto">
