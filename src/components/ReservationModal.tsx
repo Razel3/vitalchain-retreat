@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 interface ReservationModalProps {
   open: boolean;
@@ -41,6 +43,8 @@ const programs = [
 
 const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   const [form, setForm] = useState<FormData>({
     fullName: "",
     email: "",
@@ -86,6 +90,43 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
 
   const formatCurrency = (amount: number) =>
     `€${amount.toLocaleString("en-US")}`;
+
+  const handlePayDeposit = async () => {
+    if (!form.program) return;
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(
+        "https://vitalchain-backend-production.up.railway.app/api/retreats/create-reservation",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            tier: form.program,
+            participants: form.participants,
+            clientName: form.fullName,
+            clientEmail: form.email,
+            clientPhone: form.phone,
+            clientCountry: form.country,
+          }),
+        }
+      );
+      if (!res.ok) throw new Error("Request failed");
+      const data = await res.json();
+      if (data.approvalUrl) {
+        window.location.href = data.approvalUrl;
+      } else {
+        throw new Error("No approval URL");
+      }
+    } catch {
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "Please contact support@vitalchainacademy.com",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
@@ -321,10 +362,18 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
                   Back
                 </Button>
                 <Button
-                  disabled={!canProceedStep3}
+                  disabled={!canProceedStep3 || isSubmitting}
+                  onClick={handlePayDeposit}
                   className="flex-1 h-14 bg-[hsl(145,25%,36%)] hover:bg-[hsl(145,25%,30%)] text-[#F5F2EE] font-body text-sm tracking-wider uppercase rounded-sm transition-all duration-300 active:scale-[0.97] disabled:opacity-40"
                 >
-                  Pay Deposit — {formatCurrency(totalDeposit)}
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Processing…
+                    </>
+                  ) : (
+                    `Pay Deposit — ${formatCurrency(totalDeposit)}`
+                  )}
                 </Button>
               </div>
             </div>
