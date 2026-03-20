@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-retreat.jpg";
@@ -16,6 +17,7 @@ import PhotoStack from "@/components/PhotoStack";
 import GuideCarousel from "@/components/GuideCarousel";
 import { Button } from "@/components/ui/button";
 import { practices } from "@/data/practices";
+import ReservationModal from "@/components/ReservationModal";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -49,13 +51,16 @@ const benefits = [
 ];
 
 const Index = () => {
+  const [reservationOpen, setReservationOpen] = useState(false);
+
   return (
     <div className="bg-background text-foreground overflow-x-hidden">
+      <ReservationModal open={reservationOpen} onOpenChange={setReservationOpen} />
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <span className="font-display text-xl font-semibold tracking-wide">VitalChain</span>
-          <Button variant="hero" size="sm" className="text-xs px-6 py-2 h-auto">
+          <Button variant="hero" size="sm" className="text-xs px-6 py-2 h-auto" onClick={() => setReservationOpen(true)}>
             Start Your Transformation
           </Button>
         </div>
@@ -83,7 +88,7 @@ const Index = () => {
             Reconnect with your purpose, clear energetic blockages and activate your next level of life and leadership.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-            <Button variant="hero">Apply for the Next Retreat</Button>
+            <Button variant="hero" onClick={() => setReservationOpen(true)}>Apply for the Next Retreat</Button>
             <Button variant="heroOutline" className="border-cream text-cream hover:bg-cream hover:text-foreground">Explore the Experience</Button>
           </motion.div>
         </motion.div>
@@ -440,7 +445,7 @@ const Index = () => {
                     </li>
                   ))}
                 </ul>
-                <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full">
+                <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => setReservationOpen(true)}>
                   Reserve Your Spot
                 </Button>
               </motion.div>
@@ -498,7 +503,7 @@ const Index = () => {
             If you feel called to this experience, we invite you to take the next step.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-col items-center gap-3">
-            <Button variant="hero">Apply for the VitalChain Retreat</Button>
+            <Button variant="hero" onClick={() => setReservationOpen(true)}>Apply for the VitalChain Retreat</Button>
             <span className="font-body text-cream/50 text-sm">Small group experience • Limited spots available</span>
           </motion.div>
         </motion.div>
