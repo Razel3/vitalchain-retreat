@@ -43,6 +43,8 @@ const programs = [
 
 const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   const [form, setForm] = useState<FormData>({
     fullName: "",
     email: "",
