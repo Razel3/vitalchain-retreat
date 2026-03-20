@@ -362,10 +362,18 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
                   Back
                 </Button>
                 <Button
-                  disabled={!canProceedStep3}
+                  disabled={!canProceedStep3 || isSubmitting}
+                  onClick={handlePayDeposit}
                   className="flex-1 h-14 bg-[hsl(145,25%,36%)] hover:bg-[hsl(145,25%,30%)] text-[#F5F2EE] font-body text-sm tracking-wider uppercase rounded-sm transition-all duration-300 active:scale-[0.97] disabled:opacity-40"
                 >
-                  Pay Deposit — {formatCurrency(totalDeposit)}
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Processing…
+                    </>
+                  ) : (
+                    `Pay Deposit — ${formatCurrency(totalDeposit)}`
+                  )}
                 </Button>
               </div>
             </div>
