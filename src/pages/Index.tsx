@@ -28,6 +28,15 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
+const calmFadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] as const } },
+};
+
+const calmStagger = {
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
 
 const plans = [
   { name: "Awakening", duration: "7 Days", price: "€3,000", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Shared accommodation", "Chef-prepared meals", "Daily yoga & meditation", "Group healing & integration circles", "1 Reiki energy session", "Craniosacral & Fascia Therapy", "1 VitalChain NFT experience pass", "Travel cancellation insurance (optional · price upon request)"] },
@@ -177,11 +186,11 @@ const Index = () => {
             </motion.p>
             <motion.p variants={fadeUp} className="font-body text-foreground font-medium">These experiences may include:</motion.p>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={calmStagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {practices.map((exp) => (
               <Link key={exp.slug} to={`/practice/${exp.slug}`}>
                 <motion.div
-                  variants={fadeUp}
+                  variants={calmFadeUp}
                   className="relative overflow-hidden h-[280px] group cursor-pointer hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
                 >
                   <img src={exp.image} alt={exp.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
