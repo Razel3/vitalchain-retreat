@@ -186,11 +186,11 @@ const Index = () => {
             </motion.p>
             <motion.p variants={fadeUp} className="font-body text-foreground font-medium">These experiences may include:</motion.p>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={calmStagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {practices.map((exp) => (
               <Link key={exp.slug} to={`/practice/${exp.slug}`}>
                 <motion.div
-                  variants={fadeUp}
+                  variants={calmFadeUp}
                   className="relative overflow-hidden h-[280px] group cursor-pointer hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
                 >
                   <img src={exp.image} alt={exp.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
