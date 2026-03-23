@@ -84,8 +84,11 @@ const Index = () => {
           <motion.h1 variants={fadeUp} className="font-display text-6xl md:text-8xl lg:text-9xl font-light text-cream leading-[0.9] mb-6">
             VitalChain<br />Retreat
           </motion.h1>
-          <motion.p variants={fadeUp} className="font-body text-cream/80 max-w-xl text-lg leading-relaxed mb-10">
+          <motion.p variants={fadeUp} className="font-body text-cream/80 max-w-xl text-lg leading-relaxed mb-6">
             Reconnect with your purpose, clear energetic blockages and activate your next level of life and leadership.
+          </motion.p>
+          <motion.p variants={fadeUp} className="font-body text-xs tracking-[0.25em] uppercase text-sand/90 mb-10">
+            August 21–28, 2026 · Dalmatian Coast, Croatia &nbsp;·&nbsp; Limited to 12 participants
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
             <Button variant="hero" onClick={() => setReservationOpen(true)}>Apply for the Next Retreat</Button>
