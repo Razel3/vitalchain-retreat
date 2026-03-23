@@ -452,7 +452,7 @@ const Index = () => {
             ))}
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-16 max-w-xl mx-auto">
-            <p className="font-display text-xl font-medium mb-2">Limited to 13 participants</p>
+            <p className="font-display text-xl font-medium mb-2">Limited to 12 participants</p>
             <p className="font-body text-muted-foreground text-sm leading-relaxed">This retreat is intentionally limited to a small group to preserve the depth and intimacy of the experience.</p>
           </motion.div>
         </div>
