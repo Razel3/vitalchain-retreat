@@ -92,7 +92,7 @@ const Index = () => {
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
             <Button variant="hero" onClick={() => setReservationOpen(true)}>Apply for the Next Retreat</Button>
-            <Button variant="heroOutline" className="border-cream text-cream hover:bg-cream hover:text-foreground">Explore the Experience</Button>
+            <Button variant="heroOutline" className="border-cream text-cream hover:bg-cream hover:text-foreground" onClick={() => document.getElementById('experiences')?.scrollIntoView({ behavior: 'smooth' })}>Explore the Experience</Button>
           </motion.div>
         </motion.div>
       </section>
