@@ -28,6 +28,15 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
+const calmFadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] as const } },
+};
+
+const calmStagger = {
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
 
 const plans = [
   { name: "Awakening", duration: "7 Days", price: "€3,000", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Shared accommodation", "Chef-prepared meals", "Daily yoga & meditation", "Group healing & integration circles", "1 Reiki energy session", "Craniosacral & Fascia Therapy", "1 VitalChain NFT experience pass", "Travel cancellation insurance (optional · price upon request)"] },
