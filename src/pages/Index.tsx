@@ -15,6 +15,7 @@ import locationImg from "@/assets/retreat-location.jpg";
 import academyImg from "@/assets/academy-community.jpg";
 import PhotoStack from "@/components/PhotoStack";
 import GuideCarousel from "@/components/GuideCarousel";
+import InterestForm from "@/components/InterestForm";
 import { Button } from "@/components/ui/button";
 import { practices } from "@/data/practices";
 import ReservationModal from "@/components/ReservationModal";
@@ -37,11 +38,16 @@ const calmStagger = {
   visible: { transition: { staggerChildren: 0.15 } },
 };
 
-
-const plans = [
+const villaPlans = [
   { name: "Awakening", duration: "7 Days", price: "€3,000", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Shared accommodation", "Chef-prepared meals", "Daily yoga & meditation", "Group healing & integration circles", "1 Reiki energy session", "Craniosacral & Fascia Therapy", "1 VitalChain NFT experience pass", "Travel cancellation insurance (optional · price upon request)"] },
   { name: "Signature", duration: "7 Days", price: "€3,500", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Double accommodation · Max 6 rooms", "All meals + detox juices", "Daily yoga, meditation & breathwork", "3 group + 2 private sessions", "Reiki & sound healing", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "1 VitalChain NFT + digital course", "VitalChain exclusive community access", "Travel cancellation insurance (optional · price upon request)"], popular: true },
   { name: "Premium Experience", duration: "7 Days", price: "€4,700", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Luxury private room", "All meals + detox program", "Full retreat modalities included", "5 private 1:1 healing sessions", "Hypnotherapy session", "Personal spiritual coaching", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "Private airport transfer", "VIP integration session after retreat", "3 VitalChain NFTs · Lifetime Academy access", "Travel cancellation insurance (optional · price upon request)"] },
+];
+
+const splitPlans = [
+  { name: "Awakening", duration: "7 Days", price: "€2,200", features: ["Round-trip flight · Europe/Switzerland", "Airport transfer · Split", "Hotel accommodation · Radisson Blu 5★", "Spalato Spa access · 2,600m²", "Private beach access", "Chef-prepared meals", "Daily yoga & meditation", "Group healing & integration circles", "1 Reiki energy session", "Craniosacral & Fascia Therapy", "1 VitalChain NFT experience pass"] },
+  { name: "Signature", duration: "7 Days", price: "€2,800", features: ["Round-trip flight · Europe/Switzerland", "Airport transfer · Split", "Hotel accommodation · Radisson Blu 5★", "Spalato Spa access · 2,600m²", "Private beach access", "All meals + detox juices", "Daily yoga, meditation & breathwork", "3 group + 2 private sessions", "Reiki & sound healing", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "1 VitalChain NFT + digital course", "VitalChain exclusive community access"], popular: true },
+  { name: "Premium Experience", duration: "7 Days", price: "€3,500", features: ["Round-trip flight · Europe/Switzerland", "Private airport transfer · Split", "Luxury room · Radisson Blu 5★", "Spalato Spa · full access + 3 private treatments", "Private beach cabana reserved", "All meals + detox program", "Full retreat modalities included", "5 private 1:1 healing sessions", "Hypnotherapy session", "Personal spiritual coaching", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "VIP integration session after retreat", "3 VitalChain NFTs · Lifetime Academy access"] },
 ];
 
 const testimonials = [
@@ -61,6 +67,7 @@ const benefits = [
 
 const Index = () => {
   const [reservationOpen, setReservationOpen] = useState(false);
+  const [pricingTab, setPricingTab] = useState<"villa" | "split">("villa");
 
   return (
     <div className="bg-background text-foreground overflow-x-hidden">
@@ -97,11 +104,46 @@ const Index = () => {
             Reconnect with your purpose, clear energetic blockages and activate your next level of life and leadership.
           </motion.p>
           <motion.p variants={fadeUp} className="font-body text-xs tracking-[0.25em] uppercase text-sand/90 mb-10">
-            August 21–28, 2026 · Dalmatian Coast, Croatia &nbsp;·&nbsp; Limited to 12 participants
+            Two transformational experiences. One vision.
           </motion.p>
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-12">
             <Button variant="hero" onClick={() => setReservationOpen(true)}>Apply for the Next Retreat</Button>
             <Button variant="heroOutline" className="border-cream text-cream hover:bg-cream hover:text-foreground" onClick={() => document.getElementById('experiences')?.scrollIntoView({ behavior: 'smooth' })}>Explore the Experience</Button>
+          </motion.div>
+
+          {/* Two Retreat Cards */}
+          <motion.div variants={fadeUp} className="grid md:grid-cols-2 gap-6 max-w-3xl">
+            {/* Split City Retreat */}
+            <div className="bg-background/10 backdrop-blur-md border border-cream/20 p-6 md:p-8">
+              <p className="font-body text-[10px] tracking-[0.25em] uppercase text-sand/80 mb-3">Coming October 2026</p>
+              <h3 className="font-display text-2xl font-light text-cream mb-1">Split City Retreat</h3>
+              <p className="font-body text-cream/70 text-sm mb-3">Radisson Blu Resort & Spa</p>
+              <p className="font-body text-cream/60 text-xs leading-relaxed mb-5">
+                17–23 Oct 2026 · Split, Croatia · Up to 15 participants
+              </p>
+              <button
+                onClick={() => document.getElementById('october-2026')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full border border-cream/40 text-cream font-body text-xs tracking-[0.2em] uppercase py-3 px-6 hover:bg-cream/10 transition-all duration-300"
+              >
+                Explore & Register
+              </button>
+            </div>
+
+            {/* Private Villa Retreat */}
+            <div className="bg-primary/20 backdrop-blur-md border border-cream/20 p-6 md:p-8">
+              <p className="font-body text-[10px] tracking-[0.25em] uppercase text-sand/80 mb-3">Coming August 2027</p>
+              <h3 className="font-display text-2xl font-light text-cream mb-1">Private Villa Retreat</h3>
+              <p className="font-body text-cream/70 text-sm mb-3">Dalmatian Coast, Croatia</p>
+              <p className="font-body text-cream/60 text-xs leading-relaxed mb-5">
+                August 2027 · Exclusive Villa · Up to 12 participants
+              </p>
+              <button
+                onClick={() => document.getElementById('august-2027')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase py-3 px-6 hover:bg-primary/85 transition-all duration-300"
+              >
+                Explore & Reserve
+              </button>
+            </div>
           </motion.div>
         </motion.div>
       </section>
@@ -432,18 +474,144 @@ const Index = () => {
         </div>
       </section>
 
-      {/* PLANS */}
-      <section className="py-28 px-6">
+      {/* CHOOSE YOUR EXPERIENCE */}
+      <section id="choose-your-experience" className="py-28 px-6 bg-card">
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-16">
+            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Two Retreats</motion.p>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-4">Choose Your Experience</motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground text-lg max-w-2xl mx-auto">Two retreats. Same transformation. Different settings.</motion.p>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-2 gap-8">
+            {/* Split City Retreat Card */}
+            <motion.div variants={fadeUp} id="october-2026" className="border border-border bg-background p-8 md:p-10">
+              <span className="inline-block font-body text-[10px] tracking-[0.2em] uppercase text-primary bg-primary/10 px-3 py-1.5 mb-6">
+                October 2026 · Open for Registration
+              </span>
+              <h3 className="font-display text-3xl font-light mb-2">Split City Retreat</h3>
+              <p className="font-body text-muted-foreground text-sm mb-1">Radisson Blu Resort & Spa · Split, Croatia</p>
+              <p className="font-body text-muted-foreground text-sm mb-1">17–23 October 2026 · 7 Days</p>
+              <p className="font-body text-muted-foreground text-sm mb-6">Up to 15 participants</p>
+
+              <p className="font-body text-foreground text-sm font-medium mb-4">What's included:</p>
+              <ul className="space-y-2.5 mb-8">
+                {[
+                  "5-star hotel accommodation",
+                  "Spalato Spa access · 2,600m² wellness center",
+                  "Private beach · Adriatic Sea views",
+                  "All retreat modalities included",
+                  "Chef-prepared meals",
+                  "Daily yoga, meditation & breathwork",
+                  "Group healing & integration circles",
+                  "Round-trip flight · Europe/Switzerland",
+                  "Airport transfer included",
+                  "1 VitalChain NFT experience pass",
+                ].map((f) => (
+                  <li key={f} className="font-body text-sm text-muted-foreground flex items-start gap-2">
+                    <span className="text-primary mt-0.5">✓</span> {f}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="font-display text-3xl font-light text-primary mb-6">From €2,200</p>
+              <button
+                onClick={() => document.getElementById('interest-form')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase py-4 px-6 hover:bg-primary/85 transition-all duration-300"
+              >
+                Register Your Interest
+              </button>
+            </motion.div>
+
+            {/* Private Villa Retreat Card */}
+            <motion.div variants={fadeUp} id="august-2027" className="border border-border bg-background p-8 md:p-10">
+              <span className="inline-block font-body text-[10px] tracking-[0.2em] uppercase text-primary bg-primary/10 px-3 py-1.5 mb-6">
+                August 2027 · Early Access
+              </span>
+              <h3 className="font-display text-3xl font-light mb-2">Private Villa Retreat</h3>
+              <p className="font-body text-muted-foreground text-sm mb-1">Exclusive Villa · Dalmatian Coast, Croatia</p>
+              <p className="font-body text-muted-foreground text-sm mb-1">August 2027 · 7 Days</p>
+              <p className="font-body text-muted-foreground text-sm mb-6">Limited to 12 participants</p>
+
+              <p className="font-body text-foreground text-sm font-medium mb-4">What's included:</p>
+              <ul className="space-y-2.5 mb-8">
+                {[
+                  "Exclusive private villa",
+                  "Intimate group · maximum 12 people",
+                  "Chef-prepared meals + detox program",
+                  "All retreat modalities included",
+                  "Daily yoga, meditation & breathwork",
+                  "Private healing & integration circles",
+                  "Round-trip flight · Europe/Switzerland",
+                  "Transport Split–Villa (ferry, round trip)",
+                  "23 kg luggage included",
+                  "1 VitalChain NFT experience pass",
+                ].map((f) => (
+                  <li key={f} className="font-body text-sm text-muted-foreground flex items-start gap-2">
+                    <span className="text-primary mt-0.5">✓</span> {f}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="font-display text-3xl font-light text-primary mb-6">From €3,000</p>
+              <button
+                onClick={() => {
+                  setPricingTab("villa");
+                  setTimeout(() => document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' }), 100);
+                }}
+                className="w-full border border-foreground text-foreground font-body text-xs tracking-[0.2em] uppercase py-4 px-6 hover:bg-foreground hover:text-background transition-all duration-300"
+              >
+                Reserve Your Spot
+              </button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* PLANS */}
+      <section id="pricing-section" className="py-28 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-12">
             <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-4">Choose Your Retreat Experience</motion.h2>
             <motion.p variants={fadeUp} className="font-body text-muted-foreground text-lg max-w-2xl mx-auto">All retreat packages include full participation in the VitalChain transformational program.</motion.p>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-3 gap-8">
-            {plans.map((plan) => (
-              <motion.div
+
+          {/* Tab Toggle */}
+          <div className="flex justify-center mb-16">
+            <div className="inline-flex border border-border">
+              <button
+                onClick={() => setPricingTab("split")}
+                className={`font-body text-xs tracking-[0.2em] uppercase px-8 py-4 transition-all duration-300 ${
+                  pricingTab === "split"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-background text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Split · October 2026
+              </button>
+              <button
+                onClick={() => setPricingTab("villa")}
+                className={`font-body text-xs tracking-[0.2em] uppercase px-8 py-4 transition-all duration-300 ${
+                  pricingTab === "villa"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-background text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Villa · August 2027
+              </button>
+            </div>
+          </div>
+
+          <motion.div
+            key={pricingTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {(pricingTab === "villa" ? villaPlans : splitPlans).map((plan) => (
+              <div
                 key={plan.name}
-                variants={fadeUp}
                 className={`p-10 border transition-all duration-300 ${plan.popular ? "border-primary bg-primary/5 scale-[1.02]" : "border-border bg-background"}`}
               >
                 {plan.popular && <span className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-4 block">Most Popular</span>}
@@ -457,19 +625,41 @@ const Index = () => {
                     </li>
                   ))}
                 </ul>
-                <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => setReservationOpen(true)}>
-                  Reserve Your Spot
-                </Button>
-              </motion.div>
+                {pricingTab === "villa" ? (
+                  <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => setReservationOpen(true)}>
+                    Reserve Your Spot
+                  </Button>
+                ) : (
+                  <button
+                    onClick={() => document.getElementById('interest-form')?.scrollIntoView({ behavior: 'smooth' })}
+                    className={`w-full font-body text-xs tracking-[0.2em] uppercase py-4 px-6 transition-all duration-300 ${
+                      plan.popular
+                        ? "bg-primary text-primary-foreground hover:bg-primary/85"
+                        : "border border-foreground text-foreground hover:bg-foreground hover:text-background"
+                    }`}
+                  >
+                    Register Interest
+                  </button>
+                )}
+              </div>
             ))}
           </motion.div>
+
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-16 max-w-xl mx-auto">
-            <p className="font-display text-xl font-medium mb-2">Limited to 12 participants</p>
-            <p className="font-body text-muted-foreground text-sm leading-relaxed">This retreat is intentionally limited to a small group to preserve the depth and intimacy of the experience.</p>
+            <p className="font-display text-xl font-medium mb-2">
+              {pricingTab === "villa" ? "Limited to 12 participants" : "Up to 15 participants"}
+            </p>
+            <p className="font-body text-muted-foreground text-sm leading-relaxed">
+              {pricingTab === "villa"
+                ? "This retreat is intentionally limited to a small group to preserve the depth and intimacy of the experience."
+                : "A carefully curated group experience at the Radisson Blu Resort & Spa, Split."}
+            </p>
           </motion.div>
         </div>
       </section>
 
+      {/* INTEREST FORM */}
+      <InterestForm />
 
       {/* TESTIMONIALS */}
       <section className="py-28 px-6">
