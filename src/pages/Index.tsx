@@ -18,7 +18,8 @@ import GuideCarousel from "@/components/GuideCarousel";
 import InterestForm from "@/components/InterestForm";
 import { Button } from "@/components/ui/button";
 import { practices } from "@/data/practices";
-import ReservationModal from "@/components/ReservationModal";
+import ReservationModal, { type RetreatType } from "@/components/ReservationModal";
+import WaitlistModal from "@/components/WaitlistModal";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
