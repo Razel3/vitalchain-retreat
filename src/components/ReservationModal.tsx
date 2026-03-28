@@ -9,9 +9,13 @@ import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+export type RetreatType = "split" | "villa";
+
 interface ReservationModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  defaultRetreat?: RetreatType;
+  onSwitchToWaitlist?: () => void;
 }
 
 interface FormData {
@@ -19,29 +23,25 @@ interface FormData {
   email: string;
   phone: string;
   country: string;
-  program: "awakening" | "signature" | null;
+  retreat: RetreatType;
+  program: string | null;
   participants: number;
   agreedToTerms: boolean;
 }
 
-const programs = [
-  {
-    id: "awakening" as const,
-    name: "Awakening",
-    price: 3000,
-    deposit: 1500,
-    popular: false,
-  },
-  {
-    id: "signature" as const,
-    name: "Signature",
-    price: 3500,
-    deposit: 1750,
-    popular: true,
-  },
+const splitPrograms = [
+  { id: "awakening", name: "Awakening", price: 2200, deposit: 1100, popular: false },
+  { id: "signature", name: "Signature", price: 2800, deposit: 1400, popular: true },
+  { id: "premium", name: "Premium Experience", price: 3500, deposit: 1750, popular: false },
 ];
 
-const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
+const villaPrograms = [
+  { id: "awakening", name: "Awakening", price: 3000, deposit: 1500, popular: false },
+  { id: "signature", name: "Signature", price: 3500, deposit: 1750, popular: true },
+  { id: "premium", name: "Premium Experience", price: 4700, deposit: 2350, popular: false },
+];
+
+const ReservationModal = ({ open, onOpenChange, defaultRetreat = "split", onSwitchToWaitlist }: ReservationModalProps) => {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -50,27 +50,36 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
     email: "",
     phone: "",
     country: "",
+    retreat: defaultRetreat,
     program: null,
     participants: 1,
     agreedToTerms: false,
   });
 
+  // Reset retreat when modal opens with different default
+  const [lastDefault, setLastDefault] = useState(defaultRetreat);
+  if (open && defaultRetreat !== lastDefault) {
+    setLastDefault(defaultRetreat);
+    setForm(f => ({ ...f, retreat: defaultRetreat, program: null }));
+    setStep(1);
+  }
+
+  const programs = form.retreat === "split" ? splitPrograms : villaPrograms;
   const selectedProgram = useMemo(
     () => programs.find((p) => p.id === form.program),
-    [form.program]
+    [form.program, form.retreat]
   );
 
-  const totalDeposit = selectedProgram
-    ? selectedProgram.deposit * form.participants
-    : 0;
-  const totalPrice = selectedProgram
-    ? selectedProgram.price * form.participants
-    : 0;
+  const totalDeposit = selectedProgram ? selectedProgram.deposit * form.participants : 0;
+  const totalPrice = selectedProgram ? selectedProgram.price * form.participants : 0;
   const balanceDue = totalPrice - totalDeposit;
 
   const canProceedStep1 = form.fullName.trim() !== "" && form.email.trim() !== "";
   const canProceedStep2 = form.program !== null && form.participants >= 1;
   const canProceedStep3 = form.agreedToTerms;
+
+  const retreatLabel = form.retreat === "split" ? "Split · Oct 17–23, 2026" : "Villa · Aug 2027";
+  const balanceDueDate = form.retreat === "split" ? "July 17, 2026" : "July 21, 2026";
 
   const handleClose = () => {
     onOpenChange(false);
@@ -81,6 +90,7 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
         email: "",
         phone: "",
         country: "",
+        retreat: defaultRetreat,
         program: null,
         participants: 1,
         agreedToTerms: false,
@@ -88,8 +98,7 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
     }, 300);
   };
 
-  const formatCurrency = (amount: number) =>
-    `€${amount.toLocaleString("en-US")}`;
+  const formatCurrency = (amount: number) => `€${amount.toLocaleString("en-US")}`;
 
   const handlePayDeposit = async () => {
     if (!form.program) return;
@@ -107,6 +116,7 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
             clientEmail: form.email,
             clientPhone: form.phone,
             clientCountry: form.country,
+            retreat: form.retreat,
           }),
         }
       );
@@ -128,6 +138,11 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
     }
   };
 
+  const handleSwitchToWaitlist = () => {
+    handleClose();
+    setTimeout(() => onSwitchToWaitlist?.(), 350);
+  };
+
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[520px] bg-[#F5F2EE] border-none p-0 gap-0 overflow-hidden max-h-[90vh] overflow-y-auto">
@@ -138,14 +153,9 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
           <h2 className="font-display text-2xl md:text-3xl font-light text-foreground leading-tight mb-1">
             Reserve Your Spot
           </h2>
-          <p className="font-body text-sm text-muted-foreground">
-            Step {step} of 3
-          </p>
+          <p className="font-body text-sm text-muted-foreground">Step {step} of 3</p>
           <div className="mt-4">
-            <Progress
-              value={(step / 3) * 100}
-              className="h-1.5 bg-[hsl(33,20%,85%)]"
-            />
+            <Progress value={(step / 3) * 100} className="h-1.5 bg-[hsl(33,20%,85%)]" />
           </div>
         </div>
 
@@ -153,6 +163,84 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
           {/* STEP 1 */}
           {step === 1 && (
             <div className="space-y-5">
+              {/* Retreat Selector */}
+              <div>
+                <Label className="font-body text-sm font-medium text-foreground mb-3 block">
+                  Select your retreat
+                </Label>
+                <div className="grid gap-3">
+                  {/* Split Card */}
+                  <button
+                    type="button"
+                    onClick={() => setForm({ ...form, retreat: "split", program: null })}
+                    className={cn(
+                      "relative w-full text-left p-4 border-2 transition-all duration-300 rounded-sm active:scale-[0.98]",
+                      form.retreat === "split"
+                        ? "border-[hsl(145,25%,36%)] bg-[hsl(145,25%,36%)]/5 shadow-md"
+                        : "border-[hsl(33,20%,82%)] bg-white/40 hover:border-[hsl(33,20%,70%)] hover:shadow-sm"
+                    )}
+                  >
+                    <span className="font-body text-[10px] tracking-[0.2em] uppercase text-[hsl(145,25%,36%)] font-medium">
+                      Available Now
+                    </span>
+                    <h4 className="font-display text-lg font-medium text-foreground mt-1">Split City Retreat</h4>
+                    <p className="font-body text-muted-foreground text-xs mt-0.5">
+                      October 17–23, 2026 · Radisson Blu · Up to 15 people
+                    </p>
+                    {form.retreat === "split" && (
+                      <div className="absolute top-1/2 right-4 -translate-y-1/2 w-5 h-5 rounded-full bg-[hsl(145,25%,36%)] flex items-center justify-center">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6L5 9L10 3" stroke="#F5F2EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    )}
+                  </button>
+
+                  {/* Villa Card */}
+                  <button
+                    type="button"
+                    onClick={() => setForm({ ...form, retreat: "villa", program: null })}
+                    className={cn(
+                      "relative w-full text-left p-4 border-2 transition-all duration-300 rounded-sm active:scale-[0.98]",
+                      form.retreat === "villa"
+                        ? "border-[hsl(145,25%,36%)] bg-[hsl(145,25%,36%)]/5 shadow-md"
+                        : "border-[hsl(33,20%,82%)] bg-white/40 hover:border-[hsl(33,20%,70%)] hover:shadow-sm"
+                    )}
+                  >
+                    <span className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
+                      Coming 2027
+                    </span>
+                    <h4 className="font-display text-lg font-medium text-foreground mt-1">Private Villa Retreat</h4>
+                    <p className="font-body text-muted-foreground text-xs mt-0.5">
+                      August 2027 · Dalmatian Coast · Up to 12 people
+                    </p>
+                    {form.retreat === "villa" && (
+                      <div className="absolute top-1/2 right-4 -translate-y-1/2 w-5 h-5 rounded-full bg-[hsl(145,25%,36%)] flex items-center justify-center">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6L5 9L10 3" stroke="#F5F2EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    )}
+                  </button>
+                </div>
+
+                {/* Villa waitlist message */}
+                {form.retreat === "villa" && onSwitchToWaitlist && (
+                  <div className="mt-3 p-3 bg-white/50 border border-[hsl(33,20%,82%)] rounded-sm">
+                    <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                      Villa 2027 reservations are not yet open.{" "}
+                      <button
+                        type="button"
+                        onClick={handleSwitchToWaitlist}
+                        className="text-[hsl(145,25%,36%)] font-medium underline underline-offset-2 hover:text-[hsl(145,25%,30%)] transition-colors"
+                      >
+                        Join the waitlist instead →
+                      </button>
+                    </p>
+                  </div>
+                )}
+              </div>
+
               <div>
                 <Label htmlFor="fullName" className="font-body text-sm font-medium text-foreground mb-1.5 block">
                   Full Name <span className="text-primary">*</span>
@@ -204,7 +292,7 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
               </div>
               <Button
                 onClick={() => setStep(2)}
-                disabled={!canProceedStep1}
+                disabled={!canProceedStep1 || form.retreat === "villa"}
                 className="w-full h-13 bg-[hsl(145,25%,36%)] hover:bg-[hsl(145,25%,30%)] text-[#F5F2EE] font-body text-sm tracking-wider uppercase rounded-sm mt-2 transition-all duration-300 active:scale-[0.97]"
               >
                 Continue
@@ -216,7 +304,7 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
           {step === 2 && (
             <div className="space-y-5">
               <p className="font-body text-sm text-muted-foreground">
-                Select your retreat program
+                Select your program — <span className="text-foreground font-medium">{retreatLabel}</span>
               </p>
               <div className="grid gap-4">
                 {programs.map((prog) => (
@@ -236,14 +324,10 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
                         ⭐ Most Popular
                       </span>
                     )}
-                    <h4 className="font-display text-xl font-medium text-foreground mb-1">
-                      {prog.name}
-                    </h4>
+                    <h4 className="font-display text-xl font-medium text-foreground mb-1">{prog.name}</h4>
                     <p className="font-body text-muted-foreground text-sm">
                       {formatCurrency(prog.price)}/person · Deposit today:{" "}
-                      <span className="text-foreground font-medium">
-                        {formatCurrency(prog.deposit)}
-                      </span>
+                      <span className="text-foreground font-medium">{formatCurrency(prog.deposit)}</span>
                     </p>
                     {form.program === prog.id && (
                       <div className="absolute top-1/2 right-5 -translate-y-1/2 w-5 h-5 rounded-full bg-[hsl(145,25%,36%)] flex items-center justify-center">
@@ -268,9 +352,7 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
                   >
                     −
                   </button>
-                  <span className="font-body text-lg font-medium w-8 text-center tabular-nums">
-                    {form.participants}
-                  </span>
+                  <span className="font-body text-lg font-medium w-8 text-center tabular-nums">{form.participants}</span>
                   <button
                     type="button"
                     onClick={() => setForm({ ...form, participants: Math.min(10, form.participants + 1) })}
@@ -283,9 +365,7 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
 
               {selectedProgram && (
                 <div className="p-4 bg-white/50 border border-[hsl(33,20%,82%)] rounded-sm">
-                  <p className="font-body text-sm text-muted-foreground">
-                    Total deposit
-                  </p>
+                  <p className="font-body text-sm text-muted-foreground">Total deposit</p>
                   <p className="font-display text-2xl font-medium text-[hsl(145,25%,36%)]">
                     {formatCurrency(totalDeposit)}
                   </p>
@@ -315,10 +395,10 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
           {step === 3 && (
             <div className="space-y-5">
               <div className="space-y-3 p-5 bg-white/50 border border-[hsl(33,20%,82%)] rounded-sm">
-                <h4 className="font-display text-lg font-medium text-foreground mb-3">
-                  Booking Summary
-                </h4>
+                <h4 className="font-display text-lg font-medium text-foreground mb-3">Booking Summary</h4>
                 <div className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 font-body text-sm">
+                  <span className="text-muted-foreground">Retreat</span>
+                  <span className="text-foreground font-medium">{retreatLabel}</span>
                   <span className="text-muted-foreground">Name</span>
                   <span className="text-foreground font-medium">{form.fullName}</span>
                   <span className="text-muted-foreground">Email</span>
@@ -334,7 +414,7 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
                   <span className="text-foreground font-medium">{formatCurrency(totalPrice)}</span>
                   <span className="text-muted-foreground">Deposit today</span>
                   <span className="text-[hsl(145,25%,36%)] font-semibold text-base">{formatCurrency(totalDeposit)}</span>
-                  <span className="text-muted-foreground">Balance due July 21, 2026</span>
+                  <span className="text-muted-foreground">Balance due {balanceDueDate}</span>
                   <span className="text-foreground font-medium">{formatCurrency(balanceDue)}</span>
                 </div>
               </div>
@@ -343,9 +423,7 @@ const ReservationModal = ({ open, onOpenChange }: ReservationModalProps) => {
                 <Checkbox
                   id="terms"
                   checked={form.agreedToTerms}
-                  onCheckedChange={(checked) =>
-                    setForm({ ...form, agreedToTerms: checked === true })
-                  }
+                  onCheckedChange={(checked) => setForm({ ...form, agreedToTerms: checked === true })}
                   className="mt-0.5 border-[hsl(33,20%,75%)] data-[state=checked]:bg-[hsl(145,25%,36%)] data-[state=checked]:border-[hsl(145,25%,36%)]"
                 />
                 <Label htmlFor="terms" className="font-body text-sm text-muted-foreground leading-relaxed cursor-pointer">
