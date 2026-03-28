@@ -121,7 +121,7 @@ const Index = () => {
             Two transformational experiences. One vision.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-12">
-            <Button variant="hero" onClick={() => setReservationOpen(true)}>Apply for the Next Retreat</Button>
+            <Button variant="hero" onClick={() => openReservation("split")}>Apply for the Next Retreat</Button>
             <Button variant="heroOutline" className="border-cream text-cream hover:bg-cream hover:text-foreground" onClick={() => document.getElementById('experiences')?.scrollIntoView({ behavior: 'smooth' })}>Explore the Experience</Button>
           </motion.div>
 
@@ -136,10 +136,10 @@ const Index = () => {
                 17–23 Oct 2026 · Split, Croatia · Up to 15 participants
               </p>
               <button
-                onClick={() => document.getElementById('october-2026')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => openReservation("split")}
                 className="w-full border border-cream/40 text-cream font-body text-xs tracking-[0.2em] uppercase py-3 px-6 hover:bg-cream/10 transition-all duration-300"
               >
-                Explore & Register
+                Reserve Your Spot
               </button>
             </div>
 
@@ -152,10 +152,10 @@ const Index = () => {
                 August 2027 · Exclusive Villa · Up to 12 participants
               </p>
               <button
-                onClick={() => document.getElementById('august-2027')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => setWaitlistOpen(true)}
                 className="w-full bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase py-3 px-6 hover:bg-primary/85 transition-all duration-300"
               >
-                Explore & Reserve
+                Notify Me
               </button>
             </div>
           </motion.div>
