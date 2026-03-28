@@ -68,11 +68,24 @@ const benefits = [
 
 const Index = () => {
   const [reservationOpen, setReservationOpen] = useState(false);
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
+  const [defaultRetreat, setDefaultRetreat] = useState<RetreatType>("split");
   const [pricingTab, setPricingTab] = useState<"villa" | "split">("villa");
+
+  const openReservation = (retreat: RetreatType = "split") => {
+    setDefaultRetreat(retreat);
+    setReservationOpen(true);
+  };
 
   return (
     <div className="bg-background text-foreground overflow-x-hidden">
-      <ReservationModal open={reservationOpen} onOpenChange={setReservationOpen} />
+      <ReservationModal
+        open={reservationOpen}
+        onOpenChange={setReservationOpen}
+        defaultRetreat={defaultRetreat}
+        onSwitchToWaitlist={() => setWaitlistOpen(true)}
+      />
+      <WaitlistModal open={waitlistOpen} onOpenChange={setWaitlistOpen} />
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
