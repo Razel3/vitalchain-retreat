@@ -546,20 +546,13 @@ const Index = () => {
                   ))}
                 </ul>
                 {pricingTab === "villa" ? (
-                  <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => setReservationOpen(true)}>
-                    Reserve Your Spot
+                  <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => setWaitlistOpen(true)}>
+                    Notify Me
                   </Button>
                 ) : (
-                  <button
-                    onClick={() => document.getElementById('interest-form')?.scrollIntoView({ behavior: 'smooth' })}
-                    className={`w-full font-body text-xs tracking-[0.2em] uppercase py-4 px-6 transition-all duration-300 ${
-                      plan.popular
-                        ? "bg-primary text-primary-foreground hover:bg-primary/85"
-                        : "border border-foreground text-foreground hover:bg-foreground hover:text-background"
-                    }`}
-                  >
-                    Register Interest
-                  </button>
+                  <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => openReservation("split")}>
+                    Reserve Your Spot
+                  </Button>
                 )}
               </div>
             ))}
