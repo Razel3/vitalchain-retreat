@@ -18,7 +18,8 @@ import GuideCarousel from "@/components/GuideCarousel";
 import InterestForm from "@/components/InterestForm";
 import { Button } from "@/components/ui/button";
 import { practices } from "@/data/practices";
-import ReservationModal from "@/components/ReservationModal";
+import ReservationModal, { type RetreatType } from "@/components/ReservationModal";
+import WaitlistModal from "@/components/WaitlistModal";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -67,16 +68,29 @@ const benefits = [
 
 const Index = () => {
   const [reservationOpen, setReservationOpen] = useState(false);
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
+  const [defaultRetreat, setDefaultRetreat] = useState<RetreatType>("split");
   const [pricingTab, setPricingTab] = useState<"villa" | "split">("villa");
+
+  const openReservation = (retreat: RetreatType = "split") => {
+    setDefaultRetreat(retreat);
+    setReservationOpen(true);
+  };
 
   return (
     <div className="bg-background text-foreground overflow-x-hidden">
-      <ReservationModal open={reservationOpen} onOpenChange={setReservationOpen} />
+      <ReservationModal
+        open={reservationOpen}
+        onOpenChange={setReservationOpen}
+        defaultRetreat={defaultRetreat}
+        onSwitchToWaitlist={() => setWaitlistOpen(true)}
+      />
+      <WaitlistModal open={waitlistOpen} onOpenChange={setWaitlistOpen} />
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <span className="font-display text-xl font-semibold tracking-wide">VitalChain</span>
-          <Button variant="hero" size="sm" className="text-xs px-6 py-2 h-auto" onClick={() => setReservationOpen(true)}>
+          <Button variant="hero" size="sm" className="text-xs px-6 py-2 h-auto" onClick={() => openReservation("split")}>
             Start Your Transformation
           </Button>
         </div>
@@ -107,7 +121,7 @@ const Index = () => {
             Two transformational experiences. One vision.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-12">
-            <Button variant="hero" onClick={() => setReservationOpen(true)}>Apply for the Next Retreat</Button>
+            <Button variant="hero" onClick={() => openReservation("split")}>Apply for the Next Retreat</Button>
             <Button variant="heroOutline" className="border-cream text-cream hover:bg-cream hover:text-foreground" onClick={() => document.getElementById('experiences')?.scrollIntoView({ behavior: 'smooth' })}>Explore the Experience</Button>
           </motion.div>
 
@@ -122,10 +136,10 @@ const Index = () => {
                 17–23 Oct 2026 · Split, Croatia · Up to 15 participants
               </p>
               <button
-                onClick={() => document.getElementById('october-2026')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => openReservation("split")}
                 className="w-full border border-cream/40 text-cream font-body text-xs tracking-[0.2em] uppercase py-3 px-6 hover:bg-cream/10 transition-all duration-300"
               >
-                Explore & Register
+                Reserve Your Spot
               </button>
             </div>
 
@@ -138,10 +152,10 @@ const Index = () => {
                 August 2027 · Exclusive Villa · Up to 12 participants
               </p>
               <button
-                onClick={() => document.getElementById('august-2027')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => setWaitlistOpen(true)}
                 className="w-full bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase py-3 px-6 hover:bg-primary/85 transition-all duration-300"
               >
-                Explore & Reserve
+                Notify Me
               </button>
             </div>
           </motion.div>
@@ -532,20 +546,13 @@ const Index = () => {
                   ))}
                 </ul>
                 {pricingTab === "villa" ? (
-                  <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => setReservationOpen(true)}>
-                    Reserve Your Spot
+                  <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => setWaitlistOpen(true)}>
+                    Notify Me
                   </Button>
                 ) : (
-                  <button
-                    onClick={() => document.getElementById('interest-form')?.scrollIntoView({ behavior: 'smooth' })}
-                    className={`w-full font-body text-xs tracking-[0.2em] uppercase py-4 px-6 transition-all duration-300 ${
-                      plan.popular
-                        ? "bg-primary text-primary-foreground hover:bg-primary/85"
-                        : "border border-foreground text-foreground hover:bg-foreground hover:text-background"
-                    }`}
-                  >
-                    Register Interest
-                  </button>
+                  <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => openReservation("split")}>
+                    Reserve Your Spot
+                  </Button>
                 )}
               </div>
             ))}
@@ -611,7 +618,7 @@ const Index = () => {
             If you feel called to this experience, we invite you to take the next step.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-col items-center gap-3">
-            <Button variant="hero" onClick={() => setReservationOpen(true)}>Apply for the VitalChain Retreat</Button>
+            <Button variant="hero" onClick={() => openReservation("split")}>Apply for the VitalChain Retreat</Button>
             <span className="font-body text-cream/50 text-sm">Small group experience • Limited spots available</span>
           </motion.div>
         </motion.div>
