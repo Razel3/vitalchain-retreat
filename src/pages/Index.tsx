@@ -618,7 +618,7 @@ const Index = () => {
             If you feel called to this experience, we invite you to take the next step.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-col items-center gap-3">
-            <Button variant="hero" onClick={() => setReservationOpen(true)}>Apply for the VitalChain Retreat</Button>
+            <Button variant="hero" onClick={() => openReservation("split")}>Apply for the VitalChain Retreat</Button>
             <span className="font-body text-cream/50 text-sm">Small group experience • Limited spots available</span>
           </motion.div>
         </motion.div>
