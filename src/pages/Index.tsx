@@ -51,11 +51,21 @@ const splitPlans = [
   { name: "Premium Experience", duration: "7 Days", price: "€3,500", features: ["Round-trip flight · Europe/Switzerland", "Private airport transfer · Split", "Luxury room · Radisson Blu 5★", "Spalato Spa · full access + 3 private treatments", "Private beach cabana reserved", "All meals + detox program", "Full retreat modalities included", "5 private 1:1 healing sessions", "Hypnotherapy session", "Personal spiritual coaching", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "VIP integration session after retreat", "3 VitalChain NFTs · Lifetime Academy access"] },
 ];
 
-const testimonials = [
-  { name: "María L.", text: "VitalChain gave me the space I needed to finally let go of years of pain. I left feeling lighter, clearer, and more connected to myself than ever." },
-  { name: "James R.", text: "I came skeptical and left transformed. The coaching sessions alone were worth the entire retreat. This experience changed my life." },
-  { name: "Sophia K.", text: "The combination of healing practices and community support created something truly magical. I found my purpose here." },
-  { name: "David M.", text: "After years of struggling with anxiety, the meditation and energy work at VitalChain helped me find a peace I didn't know was possible." },
+const venueHighlights = [
+  { icon: "🌊", title: "Private Beach", desc: "Steps away from Žnjan Beach on the Adriatic Sea" },
+  { icon: "🧖", title: "Spalato Spa", desc: "2,600m² wellness center — saunas, pools & treatments" },
+  { icon: "🍽️", title: "Mediterranean Dining", desc: "Three restaurants with fresh local Dalmatian cuisine" },
+  { icon: "🌅", title: "Adriatic Views", desc: "Panoramic views of the islands of Hvar and Brač" },
+  { icon: "🏊", title: "Indoor & Outdoor Pools", desc: "Year-round swimming with heated indoor pool" },
+  { icon: "✨", title: "5-Star Service", desc: "Award-winning hospitality on Croatia's Dalmatian Coast" },
+];
+
+const retreatStats = [
+  { number: "7", label: "Days of transformation" },
+  { number: "10+", label: "Healing modalities" },
+  { number: "8", label: "Expert guides & practitioners" },
+  { number: "15", label: "Maximum participants" },
+  { number: "1", label: "Life-changing experience" },
 ];
 
 const benefits = [
@@ -574,18 +584,47 @@ const Index = () => {
       {/* INTEREST FORM */}
       <InterestForm />
 
-      {/* TESTIMONIALS */}
+      {/* THE EXPERIENCE */}
       <section className="py-28 px-6">
         <div className="max-w-7xl mx-auto">
+          {/* PART 1 — THE VENUE */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-16">
-            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">Testimonials</motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light">Stories of transformation</motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">The Venue</motion.p>
+            <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-3">The Experience</motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-muted-foreground text-lg">Radisson Blu Resort & Spa · Split, Croatia</motion.p>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((t) => (
-              <motion.div key={t.name} variants={fadeUp} className="bg-card p-10 border border-border">
-                <p className="font-body text-muted-foreground leading-relaxed italic mb-6">"{t.text}"</p>
-                <p className="font-display text-lg font-medium">— {t.name}</p>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {venueHighlights.map((item) => (
+              <motion.div key={item.title} variants={fadeUp} className="bg-card border border-border p-8 text-center">
+                <span className="text-3xl mb-4 block">{item.icon}</span>
+                <h3 className="font-display text-xl font-medium mb-2">{item.title}</h3>
+                <p className="font-body text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="font-body text-center text-muted-foreground text-sm italic tracking-wide">
+            October in Split: 22°C · warm sea · quiet season · perfect conditions for inner work
+          </motion.p>
+
+          {/* DIVIDER */}
+          <div className="my-20 flex items-center justify-center gap-6">
+            <div className="flex-1 h-px bg-border" />
+            <span className="font-display text-muted-foreground text-lg">✦</span>
+            <div className="flex-1 h-px bg-border" />
+          </div>
+
+          {/* PART 2 — BY THE NUMBERS */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-16">
+            <motion.p variants={fadeUp} className="font-body text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">By the Numbers</motion.p>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="flex flex-wrap justify-center gap-10 md:gap-16">
+            {retreatStats.map((stat) => (
+              <motion.div key={stat.label} variants={fadeUp} className="text-center min-w-[120px]">
+                <p className="font-display text-5xl md:text-6xl font-light text-primary mb-2">{stat.number}</p>
+                <p className="font-body text-muted-foreground text-sm tracking-wide">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
