@@ -52,7 +52,7 @@ const Terms = () => {
           <P>These Terms and Conditions govern the contractual relationship between VitalChain Academy (hereinafter "the Organiser") and any participant (hereinafter "the Client") who registers for a VitalChain Retreat programme. By completing registration and paying the deposit, the Client expressly accepts these Terms in their entirety.</P>
           <div className="font-body text-sm leading-relaxed space-y-1 mt-4" style={{ color: "#3a3a3a" }}>
             <p><strong>Organiser:</strong> VitalChain Academy</p>
-            <p><strong>Programme Director:</strong> Andrés Caicedo</p>
+            
             <p><strong>Contact:</strong> support@vitalchainacademy.com</p>
             <p><strong>Website:</strong> vitalchainacademy.com</p>
             <p><strong>Governing Law:</strong> Switzerland</p>
