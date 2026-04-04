@@ -92,7 +92,7 @@ const Terms = () => {
             "Awakening: €3,000 · Deposit (30%): €900",
             "Signature: €3,500 · Deposit (30%): €1,050",
             "Premium: €4,700 · Deposit (30%): €1,410",
-            "Balance due: on or before 21 July 2027",
+            "Balance due: on or before 2 June 2027",
           ]} />
 
           <P className="mt-4"><strong>Included:</strong> 7-night accommodation, all meals and non-alcoholic beverages, all workshops and group sessions, expert facilitators, welcome kit, airport transfers from Split (SPU).</P>
