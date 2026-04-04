@@ -667,7 +667,11 @@ const Index = () => {
       <footer className="py-12 px-6 border-t border-border">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="font-display text-lg font-semibold">VitalChain Retreat</span>
-          <p className="font-body text-sm text-muted-foreground">© 2026 VitalChain Retreat. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <Link to="/terms" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Terms & Conditions</Link>
+            <span className="text-muted-foreground">·</span>
+            <p className="font-body text-sm text-muted-foreground">© 2026 VitalChain Retreat. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>
