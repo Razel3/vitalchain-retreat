@@ -458,7 +458,7 @@ const Index = () => {
             <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-5xl font-light mb-10">The Vision Behind VitalChain</motion.h2>
             <motion.div variants={fadeUp} className="font-body text-muted-foreground leading-relaxed space-y-6 text-left">
               <p>VitalChain Retreat was created with a clear vision:</p>
-              <p className="text-foreground font-display text-xl md:text-2xl font-light italic text-center px-4">
+              <p className="text-foreground text-xl md:text-2xl font-light italic text-center px-4" style={{ fontFamily: "'Playfair Display', serif" }}>
                 To build a space where people can reconnect with their true essence, release emotional blockages and rediscover their life purpose.
               </p>
               <p>Our retreats bring together experienced practitioners from different healing and spiritual disciplines. By combining ancient wisdom with modern transformational practices, we create a unique environment where deep personal change becomes possible.</p>
