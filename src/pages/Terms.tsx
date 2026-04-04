@@ -104,7 +104,7 @@ const Terms = () => {
           <P>All prices are in Euro (EUR). Payment is accepted via PayPal or bank transfer.</P>
           <Ul items={[
             "Deposit (30%): Due at registration — non-refundable under any circumstances",
-            "Balance (70%): Due 90 days before retreat start date",
+            "Balance (70%): Due 60 days before the retreat start date",
             "Late payment: 5% surcharge after due date",
             "Failed payment: Reservation may be cancelled after 7 days written notice",
           ]} />
