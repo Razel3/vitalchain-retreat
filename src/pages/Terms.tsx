@@ -82,7 +82,7 @@ const Terms = () => {
             "Awakening: €2,200 · Deposit (30%): €660",
             "Signature: €2,800 · Deposit (30%): €840",
             "Premium: €3,500 · Deposit (30%): €1,050",
-            "Balance due: on or before 17 July 2026",
+            "Balance due: on or before 18 August 2026",
           ]} />
 
           <h3 className="font-display text-lg font-medium mb-3 mt-6" style={{ color: "#1A2B4A" }}>
