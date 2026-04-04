@@ -52,7 +52,7 @@ const Terms = () => {
           <P>These Terms and Conditions govern the contractual relationship between VitalChain Academy (hereinafter "the Organiser") and any participant (hereinafter "the Client") who registers for a VitalChain Retreat programme. By completing registration and paying the deposit, the Client expressly accepts these Terms in their entirety.</P>
           <div className="font-body text-sm leading-relaxed space-y-1 mt-4" style={{ color: "#3a3a3a" }}>
             <p><strong>Organiser:</strong> VitalChain Academy</p>
-            <p><strong>Programme Director:</strong> Andrés Caicedo</p>
+            
             <p><strong>Contact:</strong> support@vitalchainacademy.com</p>
             <p><strong>Website:</strong> vitalchainacademy.com</p>
             <p><strong>Governing Law:</strong> Switzerland</p>
@@ -82,7 +82,7 @@ const Terms = () => {
             "Awakening: €2,200 · Deposit (30%): €660",
             "Signature: €2,800 · Deposit (30%): €840",
             "Premium: €3,500 · Deposit (30%): €1,050",
-            "Balance due: on or before 17 July 2026",
+            "Balance due: on or before 18 August 2026",
           ]} />
 
           <h3 className="font-display text-lg font-medium mb-3 mt-6" style={{ color: "#1A2B4A" }}>
@@ -92,11 +92,11 @@ const Terms = () => {
             "Awakening: €3,000 · Deposit (30%): €900",
             "Signature: €3,500 · Deposit (30%): €1,050",
             "Premium: €4,700 · Deposit (30%): €1,410",
-            "Balance due: on or before 21 July 2027",
+            "Balance due: on or before 2 June 2027",
           ]} />
 
-          <P className="mt-4"><strong>Included:</strong> 7-night accommodation, all meals and non-alcoholic beverages, all workshops and group sessions, expert facilitators, welcome kit, airport transfers from Split (SPU).</P>
-          <P className="mt-2"><strong>Not included:</strong> International flights, travel insurance, alcoholic beverages, personal expenses, optional individual sessions.</P>
+          <P className="mt-4"><strong>Included:</strong> 7-night accommodation, all meals and non-alcoholic beverages, all workshops and group sessions, expert facilitators, welcome kit, return flights from major European cities to Split Airport (SPU), ground transfers from Split Airport (SPU) on arrival and departure days.</P>
+          <P className="mt-2"><strong>Not included:</strong> Flights from cities not covered by the programme routes (contact us to confirm), travel insurance, alcoholic beverages, personal expenses, optional individual sessions.</P>
         </Section>
 
         {/* 4. PAYMENT TERMS */}
@@ -104,7 +104,7 @@ const Terms = () => {
           <P>All prices are in Euro (EUR). Payment is accepted via PayPal or bank transfer.</P>
           <Ul items={[
             "Deposit (30%): Due at registration — non-refundable under any circumstances",
-            "Balance (70%): Due 90 days before retreat start date",
+            "Balance (70%): Due 60 days before the retreat start date",
             "Late payment: 5% surcharge after due date",
             "Failed payment: Reservation may be cancelled after 7 days written notice",
           ]} />
