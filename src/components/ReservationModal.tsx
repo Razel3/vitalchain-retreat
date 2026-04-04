@@ -426,8 +426,11 @@ const ReservationModal = ({ open, onOpenChange, defaultRetreat = "split", onSwit
                   onCheckedChange={(checked) => setForm({ ...form, agreedToTerms: checked === true })}
                   className="mt-0.5 border-[hsl(33,20%,75%)] data-[state=checked]:bg-[hsl(145,25%,36%)] data-[state=checked]:border-[hsl(145,25%,36%)]"
                 />
-                <Label htmlFor="terms" className="font-body text-sm text-muted-foreground leading-relaxed cursor-pointer">
-                  I agree to the retreat terms and conditions, cancellation policy, and understand that the deposit is non-refundable.
+                <Label htmlFor="terms" className="font-body text-muted-foreground leading-relaxed cursor-pointer" style={{ fontSize: "12px" }}>
+                  I have read and agree to the{" "}
+                  <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground transition-colors">
+                    Terms & Conditions
+                  </a>
                 </Label>
               </div>
 
