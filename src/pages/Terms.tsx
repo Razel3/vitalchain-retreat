@@ -95,8 +95,8 @@ const Terms = () => {
             "Balance due: on or before 2 June 2027",
           ]} />
 
-          <P className="mt-4"><strong>Included:</strong> 7-night accommodation, all meals and non-alcoholic beverages, all workshops and group sessions, expert facilitators, welcome kit, airport transfers from Split (SPU).</P>
-          <P className="mt-2"><strong>Not included:</strong> International flights, travel insurance, alcoholic beverages, personal expenses, optional individual sessions.</P>
+          <P className="mt-4"><strong>Included:</strong> 7-night accommodation, all meals and non-alcoholic beverages, all workshops and group sessions, expert facilitators, welcome kit, return flights from major European cities to Split Airport (SPU), ground transfers from Split Airport (SPU) on arrival and departure days.</P>
+          <P className="mt-2"><strong>Not included:</strong> Flights from cities not covered by the programme routes (contact us to confirm), travel insurance, alcoholic beverages, personal expenses, optional individual sessions.</P>
         </Section>
 
         {/* 4. PAYMENT TERMS */}
