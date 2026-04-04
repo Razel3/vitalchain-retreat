@@ -11,7 +11,7 @@ const cancellationData = [
 
 const Terms = () => {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E8" }}>
+    <div className="min-h-screen bg-background">
       {/* BANNER */}
       <div
         className="w-full py-16 px-6 text-center"
@@ -27,10 +27,7 @@ const Terms = () => {
         >
           VITALCHAIN ACADEMY
         </p>
-        <h1
-          className="text-4xl md:text-5xl font-light mb-4"
-          style={{ fontFamily: "Georgia, 'Playfair Display', serif", color: "#FFFFFF" }}
-        >
+        <h1 className="font-display text-4xl md:text-5xl font-light mb-4 text-white">
           Terms &amp; Conditions
         </h1>
         <p
@@ -43,20 +40,19 @@ const Terms = () => {
 
       {/* CONTENT */}
       <div className="max-w-3xl mx-auto px-6 py-16 space-y-12">
-        <p className="font-body text-sm text-center" style={{ color: "#1A2B4A" }}>
+        <p className="font-body text-sm text-center text-muted-foreground">
           Retreat Programme · Effective April 2026 · Version 1.0
         </p>
 
         {/* 1. GENERAL INFORMATION */}
         <Section num="1" title="GENERAL INFORMATION">
           <P>These Terms and Conditions govern the contractual relationship between VitalChain Academy (hereinafter "the Organiser") and any participant (hereinafter "the Client") who registers for a VitalChain Retreat programme. By completing registration and paying the deposit, the Client expressly accepts these Terms in their entirety.</P>
-          <div className="font-body text-sm leading-relaxed space-y-1 mt-4" style={{ color: "#3a3a3a" }}>
-            <p><strong>Organiser:</strong> VitalChain Academy</p>
-            
-            <p><strong>Contact:</strong> support@vitalchainacademy.com</p>
-            <p><strong>Website:</strong> vitalchainacademy.com</p>
-            <p><strong>Governing Law:</strong> Switzerland</p>
-            <p><strong>Currency:</strong> EUR (Euro)</p>
+          <div className="font-body text-sm leading-relaxed space-y-1 mt-4 rounded-md p-4 bg-secondary">
+            <p className="text-foreground"><strong className="text-primary">Organiser:</strong> VitalChain Academy</p>
+            <p className="text-foreground"><strong className="text-primary">Contact:</strong> support@vitalchainacademy.com</p>
+            <p className="text-foreground"><strong className="text-primary">Website:</strong> vitalchainacademy.com</p>
+            <p className="text-foreground"><strong className="text-primary">Governing Law:</strong> Switzerland</p>
+            <p className="text-foreground"><strong className="text-primary">Currency:</strong> EUR (Euro)</p>
           </div>
         </Section>
 
@@ -75,7 +71,7 @@ const Terms = () => {
 
         {/* 3. PRICING */}
         <Section num="3" title="PRICING">
-          <h3 className="font-display text-lg font-medium mb-3" style={{ color: "#1A2B4A" }}>
+          <h3 className="font-display text-lg font-medium mb-3 text-primary">
             Split City Retreat — Radisson Blu Resort & Spa, Split · 17–23 October 2026
           </h3>
           <Ul items={[
@@ -85,7 +81,7 @@ const Terms = () => {
             "Balance due: on or before 18 August 2026",
           ]} />
 
-          <h3 className="font-display text-lg font-medium mb-3 mt-6" style={{ color: "#1A2B4A" }}>
+          <h3 className="font-display text-lg font-medium mb-3 mt-6 text-primary">
             Private Villa Retreat — Dalmatian Coast · August 2027
           </h3>
           <Ul items={[
@@ -117,7 +113,7 @@ const Terms = () => {
           <div className="mt-6 overflow-x-auto" style={{ borderLeft: "4px solid #C9A96E" }}>
             <table className="w-full text-sm font-body">
               <thead>
-                <tr style={{ backgroundColor: "#1A2B4A", color: "#FFFFFF" }}>
+                <tr className="bg-primary text-primary-foreground">
                   <th className="text-left px-4 py-3 font-medium">Cancellation Period</th>
                   <th className="text-left px-4 py-3 font-medium">Balance Refund</th>
                   <th className="text-left px-4 py-3 font-medium">Alternative</th>
@@ -125,10 +121,10 @@ const Terms = () => {
               </thead>
               <tbody>
                 {cancellationData.map((row, i) => (
-                  <tr key={i} style={{ backgroundColor: i % 2 === 0 ? "#FFFFFF" : "#F0EDE8" }}>
-                    <td className="px-4 py-3 font-medium" style={{ color: "#1A2B4A" }}>{row.period}</td>
-                    <td className="px-4 py-3" style={{ color: "#3a3a3a" }}>{row.refund}</td>
-                    <td className="px-4 py-3" style={{ color: "#3a3a3a" }}>{row.alternative}</td>
+                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-secondary"}>
+                    <td className="px-4 py-3 font-medium text-primary">{row.period}</td>
+                    <td className="px-4 py-3 text-foreground">{row.refund}</td>
+                    <td className="px-4 py-3 text-foreground">{row.alternative}</td>
                   </tr>
                 ))}
               </tbody>
@@ -212,11 +208,11 @@ const Terms = () => {
 
         {/* FOOTER */}
         <div className="border-t pt-8 text-center space-y-2" style={{ borderColor: "#C9A96E" }}>
-          <p className="font-body text-sm" style={{ color: "#1A2B4A" }}>© 2026 VitalChain Academy. All rights reserved.</p>
-          <p className="font-body text-sm" style={{ color: "#666" }}>
+          <p className="font-body text-sm text-foreground">© 2026 VitalChain Academy. All rights reserved.</p>
+          <p className="font-body text-sm text-muted-foreground">
             support@vitalchainacademy.com · vitalchainacademy.com
           </p>
-          <Link to="/" className="inline-block mt-4 font-body text-sm underline" style={{ color: "#C9A96E" }}>
+          <Link to="/" className="inline-block mt-4 font-body text-sm text-primary underline hover:opacity-80 transition-opacity">
             ← Back to Home
           </Link>
         </div>
@@ -229,7 +225,7 @@ const Terms = () => {
 
 const Section = ({ num, title, children }: { num: string; title: string; children: React.ReactNode }) => (
   <section>
-    <h2 className="font-display text-2xl font-medium mb-4" style={{ color: "#1A2B4A" }}>
+    <h2 className="font-display text-2xl font-medium mb-4 text-primary">
       {num}. {title}
     </h2>
     {children}
@@ -237,13 +233,13 @@ const Section = ({ num, title, children }: { num: string; title: string; childre
 );
 
 const P = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <p className={`font-body text-sm leading-relaxed ${className}`} style={{ color: "#3a3a3a" }}>
+  <p className={`font-body text-sm leading-relaxed text-foreground ${className}`}>
     {children}
   </p>
 );
 
 const Ul = ({ items }: { items: string[] }) => (
-  <ul className="list-disc list-inside space-y-1 font-body text-sm leading-relaxed ml-2" style={{ color: "#3a3a3a" }}>
+  <ul className="list-disc list-inside space-y-1 font-body text-sm leading-relaxed ml-2 text-foreground">
     {items.map((item, i) => (
       <li key={i}>{item}</li>
     ))}
