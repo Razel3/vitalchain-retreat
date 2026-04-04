@@ -365,7 +365,7 @@ const Index = () => {
                   ].map((slot) => (
                     <div key={slot.time} className="flex items-start gap-4">
                       <div className="w-20 shrink-0">
-                        <span className="font-display text-sm font-semibold text-primary">{slot.time}</span>
+                        <span className="font-body text-sm font-medium text-primary">{slot.time}</span>
                       </div>
                       <div className="border-l border-border pl-4">
                         <p className="font-body text-muted-foreground text-sm leading-relaxed">{slot.desc}</p>
