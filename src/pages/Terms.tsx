@@ -14,9 +14,8 @@ const Terms = () => {
     <div className="min-h-screen bg-background">
       {/* BANNER */}
       <div
-        className="w-full py-16 px-6 text-center"
+        className="w-full py-16 px-6 text-center bg-primary"
         style={{
-          backgroundColor: "#1A2B4A",
           borderTop: "3px solid #C9A96E",
           borderBottom: "3px solid #C9A96E",
         }}
