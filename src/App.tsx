@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import PracticeDetail from "./pages/PracticeDetail";
 import NotFound from "./pages/NotFound";
 import RetreatSuccess from "./pages/RetreatSuccess";
+import Terms from "./pages/Terms";
 
 const queryClient = new QueryClient();
 
