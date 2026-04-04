@@ -664,13 +664,13 @@ const Index = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-12 px-6 border-t border-border">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <footer className="px-6 border-t border-border" style={{ paddingTop: '24px', paddingBottom: '24px' }}>
+        <div className="max-w-7xl mx-auto flex flex-col items-center gap-4 text-center">
           <span className="font-display text-lg font-semibold">VitalChain Retreat</span>
           <div className="flex items-center gap-4">
-            <Link to="/terms" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Terms & Conditions</Link>
-            <span className="text-muted-foreground">·</span>
-            <p className="font-body text-sm text-muted-foreground">© 2026 VitalChain Retreat. All rights reserved.</p>
+            <Link to="/terms" className="font-body hover:underline transition-colors" style={{ fontSize: '14px', color: 'hsl(var(--muted-foreground) / 0.85)' }}>Terms & Conditions</Link>
+            <span style={{ color: 'hsl(var(--muted-foreground) / 0.85)' }}>·</span>
+            <p className="font-body" style={{ fontSize: '14px', color: 'hsl(var(--muted-foreground) / 0.85)' }}>© 2026 VitalChain Retreat. All rights reserved.</p>
           </div>
         </div>
       </footer>
