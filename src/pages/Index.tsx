@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-retreat.jpg";
@@ -39,16 +40,18 @@ const calmStagger = {
   visible: { transition: { staggerChildren: 0.15 } },
 };
 
+const INSURANCE_LINE = "Travel cancellation insurance via Akashaya Travel (optional · price upon request)";
+
 const villaPlans = [
-  { name: "Awakening", duration: "7 Days", price: "€3,000", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Shared accommodation", "Chef-prepared meals", "Daily yoga & meditation", "Group healing & integration circles", "1 Reiki energy session", "Craniosacral & Fascia Therapy", "1 VitalChain NFT experience pass", "Travel cancellation insurance (optional · price upon request)"] },
-  { name: "Signature", duration: "7 Days", price: "€3,500", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Double accommodation · Max 6 rooms", "All meals + detox juices", "Daily yoga, meditation & breathwork", "3 group + 2 private sessions", "Reiki & sound healing", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "1 VitalChain NFT + digital course", "VitalChain exclusive community access", "Travel cancellation insurance (optional · price upon request)"], popular: true },
-  { name: "Premium Experience", duration: "7 Days", price: "€4,700", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Luxury private room", "All meals + detox program", "Full retreat modalities included", "5 private 1:1 healing sessions", "Hypnotherapy session", "Personal spiritual coaching", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "Private airport transfer", "VIP integration session after retreat", "3 VitalChain NFTs · Lifetime Academy access", "Travel cancellation insurance (optional · price upon request)"] },
+  { name: "Awakening", duration: "7 Days", price: "€3,000", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Shared accommodation", "Private beach access", "Breakfast buffet · Lunch & Dinner included", "Daily yoga & meditation", "Group healing & integration circles", "1 Reiki energy session", "Craniosacral & Fascia Therapy", "1 VitalChain NFT experience pass", INSURANCE_LINE] },
+  { name: "Signature", duration: "7 Days", price: "€3,500", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Double accommodation · Max 6 rooms", "Private beach access", "Breakfast buffet · Lunch & Dinner included", "Daily yoga, meditation & breathwork", "3 group + 2 private sessions", "Reiki & sound healing", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "1 VitalChain NFT + digital course", "VitalChain exclusive community access", INSURANCE_LINE], popular: true },
+  { name: "Premium Experience", duration: "7 Days", price: "€4,700", features: ["Round-trip flight · Europe/Switzerland", "Transport Split–Villa (ferry, round trip)", "23 kg luggage included", "Luxury private room", "Private beach access", "Breakfast buffet · Lunch & Dinner included", "Full retreat modalities included", "5 private 1:1 healing sessions", "Hypnotherapy session", "Personal spiritual coaching", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "Private airport transfer", "VIP integration session after retreat", "3 VitalChain NFTs · Lifetime Academy access", INSURANCE_LINE] },
 ];
 
 const splitPlans = [
-  { name: "Awakening", duration: "7 Days", price: "€2,200", features: ["Round-trip flight · Europe/Switzerland", "Airport transfer · Split", "Hotel accommodation · Radisson Blu 5★", "Spalato Spa access · 2,600m²", "Private beach access", "Chef-prepared meals", "Daily yoga & meditation", "Group healing & integration circles", "1 Reiki energy session", "Craniosacral & Fascia Therapy", "1 VitalChain NFT experience pass"] },
-  { name: "Signature", duration: "7 Days", price: "€2,800", features: ["Round-trip flight · Europe/Switzerland", "Airport transfer · Split", "Hotel accommodation · Radisson Blu 5★", "Spalato Spa access · 2,600m²", "Private beach access", "All meals + detox juices", "Daily yoga, meditation & breathwork", "3 group + 2 private sessions", "Reiki & sound healing", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "1 VitalChain NFT + digital course", "VitalChain exclusive community access"], popular: true },
-  { name: "Premium Experience", duration: "7 Days", price: "€3,500", features: ["Round-trip flight · Europe/Switzerland", "Private airport transfer · Split", "Luxury room · Radisson Blu 5★", "Spalato Spa · full access + 3 private treatments", "Private beach cabana reserved", "All meals + detox program", "Full retreat modalities included", "5 private 1:1 healing sessions", "Hypnotherapy session", "Personal spiritual coaching", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "VIP integration session after retreat", "3 VitalChain NFTs · Lifetime Academy access"] },
+  { name: "Awakening", duration: "7 Days", price: "€2,200", features: ["Round-trip flight · Europe/Switzerland", "Airport transfer · Split", "Hotel accommodation · Radisson Blu 5★", "Spalato Spa access · 2,600m²", "Private beach access", "Breakfast buffet · Lunch & Dinner included", "Daily yoga & meditation", "Group healing & integration circles", "1 Reiki energy session", "Craniosacral & Fascia Therapy", "1 VitalChain NFT experience pass", INSURANCE_LINE] },
+  { name: "Signature", duration: "7 Days", price: "€2,800", features: ["Round-trip flight · Europe/Switzerland", "Airport transfer · Split", "Hotel accommodation · Radisson Blu 5★", "Spalato Spa access · 2,600m²", "Private beach access", "Breakfast buffet · Lunch & Dinner included", "Daily yoga, meditation & breathwork", "3 group + 2 private sessions", "Reiki & sound healing", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "1 VitalChain NFT + digital course", "VitalChain exclusive community access", INSURANCE_LINE], popular: true },
+  { name: "Premium Experience", duration: "7 Days", price: "€3,500", features: ["Round-trip flight · Europe/Switzerland", "Private airport transfer · Split", "Luxury room · Radisson Blu 5★", "Spalato Spa · full access + 3 private treatments", "Private beach cabana reserved", "Breakfast buffet · Lunch & Dinner included", "Full retreat modalities included", "5 private 1:1 healing sessions", "Hypnotherapy session", "Personal spiritual coaching", "Craniosacral & Fascia Therapy", "Family constellation workshop", "Addiction & Habits Workshop", "VIP integration session after retreat", "3 VitalChain NFTs · Lifetime Academy access", INSURANCE_LINE] },
 ];
 
 const venueHighlights = [
@@ -549,11 +552,20 @@ const Index = () => {
                 <p className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground mb-3">{plan.duration}</p>
                 <p className="font-display text-3xl font-light text-primary mb-6">{plan.price}</p>
                 <ul className="space-y-3 mb-8">
-                  {plan.features.map((f) => (
-                    <li key={f} className="font-body text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="text-primary mt-0.5">✓</span> {f}
-                    </li>
-                  ))}
+                  {plan.features.map((f) => {
+                    const isInsurance = f.includes("Akashaya Travel");
+                    return (
+                      <li key={f} className={cn(
+                        "font-body flex items-start gap-2",
+                        isInsurance
+                          ? "text-xs text-muted-foreground/70 italic"
+                          : "text-sm text-muted-foreground"
+                      )}>
+                        <span className="text-primary mt-0.5 text-sm">✓</span>
+                        {f}
+                      </li>
+                    );
+                  })}
                 </ul>
                 {pricingTab === "villa" ? (
                   <Button variant={plan.popular ? "hero" : "heroOutline"} className="w-full" onClick={() => setWaitlistOpen(true)}>
