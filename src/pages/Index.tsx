@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-retreat.jpg";
