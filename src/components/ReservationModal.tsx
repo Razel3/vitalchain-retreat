@@ -78,8 +78,8 @@ const ReservationModal = ({ open, onOpenChange, defaultRetreat = "split", onSwit
   const canProceedStep2 = form.program !== null && form.participants >= 1;
   const canProceedStep3 = form.agreedToTerms;
 
-  const retreatLabel = form.retreat === "split" ? "Split · Oct 17–23, 2026" : "Villa · Aug 2027";
-  const balanceDueDate = form.retreat === "split" ? "July 17, 2026" : "July 21, 2026";
+  const retreatLabel = form.retreat === "split" ? "Split · 31 Oct – 6 Nov 2026" : "Villa · Aug 2027";
+  const balanceDueDate = form.retreat === "split" ? "August 31, 2026" : "July 21, 2026";
 
   const handleClose = () => {
     onOpenChange(false);
@@ -185,7 +185,7 @@ const ReservationModal = ({ open, onOpenChange, defaultRetreat = "split", onSwit
                     </span>
                     <h4 className="font-display text-lg font-medium text-foreground mt-1">Split City Retreat</h4>
                     <p className="font-body text-muted-foreground text-xs mt-0.5">
-                      October 17–23, 2026 · Radisson Blu · Up to 15 people
+                      31 Oct – 6 Nov 2026 · Radisson Blu · Up to 15 people
                     </p>
                     {form.retreat === "split" && (
                       <div className="absolute top-1/2 right-4 -translate-y-1/2 w-5 h-5 rounded-full bg-[hsl(145,25%,36%)] flex items-center justify-center">

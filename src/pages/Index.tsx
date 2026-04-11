@@ -144,11 +144,11 @@ const Index = () => {
           <motion.div variants={fadeUp} className="grid md:grid-cols-2 gap-6 max-w-3xl">
             {/* Split City Retreat */}
             <div className="bg-background/10 backdrop-blur-md border border-cream/20 p-6 md:p-8">
-              <p className="font-body text-[10px] tracking-[0.25em] uppercase text-sand/80 mb-3">Coming October 2026</p>
+              <p className="font-body text-[10px] tracking-[0.25em] uppercase text-sand/80 mb-3"><p className="font-body text-[10px] tracking-[0.25em] uppercase text-sand/80 mb-3">Coming Oct–Nov 2026</p></p>
               <h3 className="font-display text-2xl font-light text-cream mb-1">Split City Retreat</h3>
               <p className="font-body text-cream/70 text-sm mb-3">Radisson Blu Resort & Spa</p>
               <p className="font-body text-cream/60 text-xs leading-relaxed mb-5">
-                17–23 Oct 2026 · Split, Croatia · Up to 15 participants
+                31 Oct – 6 Nov 2026 · Split, Croatia · Up to 15 participants
               </p>
               <button
                 onClick={() => openReservation("split")}
@@ -522,7 +522,7 @@ const Index = () => {
                     : "bg-background text-muted-foreground hover:text-foreground"
                 }`}
               >
-                Split · October 2026
+                Split · Oct–Nov 2026
               </button>
               <button
                 onClick={() => setPricingTab("villa")}
@@ -624,7 +624,7 @@ const Index = () => {
           </motion.div>
 
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="font-body text-center text-muted-foreground text-sm italic tracking-wide">
-            October in Split: 22°C · warm sea · quiet season · perfect conditions for inner work
+            Late October in Split: 22°C · warm sea · quiet season · perfect conditions for inner work
           </motion.p>
 
           {/* DIVIDER */}
