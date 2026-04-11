@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { practices } from "@/data/practices";
 import { Button } from "@/components/ui/button";
+import logoVch from "@/assets/logo-vch-suisse.svg";
 import { ArrowLeft } from "lucide-react";
 
 const fadeUp = {
