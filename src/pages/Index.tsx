@@ -148,7 +148,7 @@ const Index = () => {
               <h3 className="font-display text-2xl font-light text-cream mb-1">Split City Retreat</h3>
               <p className="font-body text-cream/70 text-sm mb-3">Radisson Blu Resort & Spa</p>
               <p className="font-body text-cream/60 text-xs leading-relaxed mb-5">
-                31 Oct – 6 Nov 2026 · Split, Croatia · Up to 15 participants
+                31 Oct – 6 Nov 2026 · Split, Croatia · Up to 12 participants
               </p>
               <button
                 onClick={() => openReservation("split")}
@@ -589,7 +589,7 @@ const Index = () => {
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-16 max-w-xl mx-auto">
             <p className="font-display text-xl font-medium mb-2">
-              {pricingTab === "villa" ? "Limited to 12 participants" : "Up to 15 participants"}
+              {pricingTab === "villa" ? "Limited to 12 participants" : "Up to 12 participants"}
             </p>
             <p className="font-body text-muted-foreground text-sm leading-relaxed">
               {pricingTab === "villa"

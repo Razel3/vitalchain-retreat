@@ -185,7 +185,7 @@ const ReservationModal = ({ open, onOpenChange, defaultRetreat = "split", onSwit
                     </span>
                     <h4 className="font-display text-lg font-medium text-foreground mt-1">Split City Retreat</h4>
                     <p className="font-body text-muted-foreground text-xs mt-0.5">
-                      31 Oct – 6 Nov 2026 · Radisson Blu · Up to 15 people
+                      31 Oct – 6 Nov 2026 · Radisson Blu · Up to 12 people
                     </p>
                     {form.retreat === "split" && (
                       <div className="absolute top-1/2 right-4 -translate-y-1/2 w-5 h-5 rounded-full bg-[hsl(145,25%,36%)] flex items-center justify-center">
