@@ -130,6 +130,13 @@ const Terms = () => {
             </table>
           </div>
 
+          {/* HOTEL CANCELLATION POLICY */}
+          <div className="mt-6 rounded-md p-4 bg-secondary" style={{ borderLeft: "4px solid #C9A96E" }}>
+            <P className="font-medium uppercase text-xs tracking-widest text-primary mb-2">HOTEL CANCELLATION POLICY</P>
+            <P>The hotel reservation component is subject to Radisson Blu Resort &amp; Spa's own cancellation policy. VitalChain Academy operates as event organiser and applies separate cancellation terms to cover all programme costs beyond accommodation, including facilitator contracts, flights, transfers and programme preparation.</P>
+            <P className="mt-3">We strongly recommend protecting your investment with travel cancellation insurance. VitalChain Academy has partnered with Akashaya Travel to offer comprehensive cancellation coverage at competitive rates. Please contact us at support@vitalchainacademy.com for details.</P>
+          </div>
+
           <div className="mt-6 space-y-4">
             <div>
               <P className="font-medium">HOW TO CANCEL</P>
