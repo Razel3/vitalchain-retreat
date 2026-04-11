@@ -30,7 +30,7 @@ interface FormData {
 }
 
 const splitPrograms = [
-  { id: "awakening", name: "Awakening", price: 2200, deposit: 1100, popular: false },
+  { id: "awakening", name: "Awakening", price: 2300, deposit: 1150, popular: false },
   { id: "signature", name: "Signature", price: 2800, deposit: 1400, popular: true },
   { id: "premium", name: "Premium Experience", price: 3500, deposit: 1750, popular: false },
 ];
