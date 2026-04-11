@@ -71,13 +71,13 @@ const Terms = () => {
         {/* 3. PRICING */}
         <Section num="3" title="PRICING">
           <h3 className="font-display text-lg font-medium mb-3 text-primary">
-            Split City Retreat — Radisson Blu Resort & Spa, Split · 17–23 October 2026
+            Split City Retreat — Radisson Blu Resort & Spa, Split · 31 October – 6 November 2026
           </h3>
           <Ul items={[
             "Awakening: €2,200 · Deposit (30%): €660",
             "Signature: €2,800 · Deposit (30%): €840",
             "Premium: €3,500 · Deposit (30%): €1,050",
-            "Balance due: on or before 18 August 2026",
+            "Balance due: on or before 31 August 2026",
           ]} />
 
           <h3 className="font-display text-lg font-medium mb-3 mt-6 text-primary">

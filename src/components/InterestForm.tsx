@@ -181,7 +181,7 @@ const InterestForm = () => {
             </Label>
             <RadioGroup value={form.retreatChoice} onValueChange={(v) => setForm({ ...form, retreatChoice: v })} className="space-y-3">
               {[
-                { value: "split_oct_2026", label: "Split · October 2026" },
+                { value: "split_oct_2026", label: "Split · 31 Oct – 6 Nov 2026" },
                 { value: "villa_aug_2027", label: "Private Villa · August 2027" },
                 { value: "both", label: "Both" },
               ].map((opt) => (
