@@ -14,7 +14,7 @@ import poolDay from "@/assets/retreat/pool-day.jpg";
 import garden from "@/assets/retreat/garden.jpg";
 import locationImg from "@/assets/retreat-location.jpg";
 import academyImg from "@/assets/academy-community.jpg";
-import logoVch from "@/assets/logo-vch-suisse.svg";
+
 import PhotoStack from "@/components/PhotoStack";
 import GuideCarousel from "@/components/GuideCarousel";
 import InterestForm from "@/components/InterestForm";
@@ -105,7 +105,7 @@ const Index = () => {
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/"><img src={logoVch} alt="VitalChain Health Suisse" className="h-10 w-auto" /></Link>
+          <span className="font-display text-xl font-semibold tracking-wide">VitalChain</span>
           <Button variant="hero" size="sm" className="text-xs px-6 py-2 h-auto" onClick={() => openReservation("split")}>
             Start Your Transformation
           </Button>
@@ -686,7 +686,7 @@ const Index = () => {
       {/* FOOTER */}
       <footer className="px-6 border-t border-border" style={{ paddingTop: '24px', paddingBottom: '24px' }}>
         <div className="max-w-7xl mx-auto flex flex-col items-center gap-4 text-center">
-          <img src={logoVch} alt="VitalChain Health Suisse" className="h-12 w-auto mb-4" style={{ filter: 'brightness(0) invert(1)' }} />
+          <span className="font-display text-lg font-semibold">VitalChain Retreat</span>
           <div className="flex items-center gap-4">
             <Link to="/terms" className="font-body hover:underline transition-colors" style={{ fontSize: '14px', color: 'hsl(var(--muted-foreground) / 0.85)' }}>Terms & Conditions</Link>
             <span style={{ color: 'hsl(var(--muted-foreground) / 0.85)' }}>·</span>
