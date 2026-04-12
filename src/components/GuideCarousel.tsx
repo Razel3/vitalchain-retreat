@@ -158,7 +158,7 @@ const GuideCarousel = () => {
                         Our team of experienced healers and practitioners will be announced soon.
                       </p>
                       <p className="font-body text-sm text-cream/70 tracking-[0.15em] uppercase">
-                        Croatia · October – November 2026
+                        Croatia · November 2026
                       </p>
                       <p className="font-body text-xs text-cream/50 mt-8">Click to flip back</p>
                     </div>
