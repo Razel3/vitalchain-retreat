@@ -29,16 +29,18 @@ interface FormData {
   agreedToTerms: boolean;
 }
 
+const DEPOSIT_RATE = 0.3;
+
 const splitPrograms = [
-  { id: "awakening", name: "Awakening", price: 2300, deposit: 1150, popular: false },
-  { id: "signature", name: "Signature", price: 2800, deposit: 1400, popular: true },
-  { id: "premium", name: "Premium Experience", price: 3500, deposit: 1750, popular: false },
+  { id: "awakening", name: "Awakening", price: 2300, deposit: Math.round(2300 * DEPOSIT_RATE), popular: false },
+  { id: "signature", name: "Signature", price: 2800, deposit: Math.round(2800 * DEPOSIT_RATE), popular: true },
+  { id: "premium", name: "Premium Experience", price: 3500, deposit: Math.round(3500 * DEPOSIT_RATE), popular: false },
 ];
 
 const villaPrograms = [
-  { id: "awakening", name: "Awakening", price: 3000, deposit: 1500, popular: false },
-  { id: "signature", name: "Signature", price: 3500, deposit: 1750, popular: true },
-  { id: "premium", name: "Premium Experience", price: 4700, deposit: 2350, popular: false },
+  { id: "awakening", name: "Awakening", price: 3000, deposit: Math.round(3000 * DEPOSIT_RATE), popular: false },
+  { id: "signature", name: "Signature", price: 3500, deposit: Math.round(3500 * DEPOSIT_RATE), popular: true },
+  { id: "premium", name: "Premium Experience", price: 4700, deposit: Math.round(4700 * DEPOSIT_RATE), popular: false },
 ];
 
 const ReservationModal = ({ open, onOpenChange, defaultRetreat = "split", onSwitchToWaitlist }: ReservationModalProps) => {
