@@ -523,7 +523,7 @@ const Index = () => {
                     : "bg-background text-muted-foreground hover:text-foreground"
                 }`}
               >
-                Split · Oct–Nov 2026
+                Split · Nov 2026
               </button>
               <button
                 onClick={() => setPricingTab("villa")}
